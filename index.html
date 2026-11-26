@@ -10,9 +10,12 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Lato:wght@400;500;700;900&family=Merriweather:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="m2-styles.css">
   <script src="data/products.js" defer></script>
   <script src="data/i18n.js" defer></script>
+  <script src="data/m2-data.js" defer></script>
   <script src="app.js" defer></script>
+  <script src="m2-features.js" defer></script>
   <!-- TODO(v1.0): Remove QA viewport switcher before v1.0 production release -->
   <script src="qa-viewport.js" defer></script>
 </head>
@@ -28,6 +31,7 @@
         <a href="#home" class="nav-link is-active" data-nav="home" data-i18n="nav.home">HOME</a>
         <a href="#shop" class="nav-link" data-nav="shop" data-i18n="nav.shop">ROASTS</a>
         <a href="#features" class="nav-link" data-nav="features" data-i18n="nav.features">OUR STORY</a>
+        <a href="#case-study" class="nav-link" data-nav="case-study" data-i18n="nav.caseStudy">CASE STUDY</a>
         <button type="button" class="nav-link nav-cart-btn" id="header-cart-btn" data-action="open-cart-drawer" data-i18n-aria="nav.openCartAria" aria-label="Open shopping cart drawer">
           <span data-i18n="nav.cart">CART</span> <span class="nav-cart-count" id="nav-cart-count" hidden>(0)</span>
         </button>
@@ -57,6 +61,7 @@
         <a href="#home" class="drawer-link" data-nav="home" data-i18n="nav.home">HOME</a>
         <a href="#shop" class="drawer-link" data-nav="shop" data-i18n="nav.shop">ROASTS</a>
         <a href="#features" class="drawer-link" data-nav="features" data-i18n="nav.features">OUR STORY</a>
+        <a href="#case-study" class="drawer-link" data-nav="case-study" data-i18n="nav.caseStudy">CASE STUDY</a>
         <button type="button" class="drawer-link drawer-cart-btn" id="drawer-cart-btn" data-action="open-cart-drawer" data-i18n-aria="nav.openCartAria" aria-label="Open shopping cart drawer">
           <span data-i18n="nav.cart">CART</span> <span class="drawer-cart-count" id="drawer-cart-count" hidden>(0)</span>
         </button>
@@ -119,6 +124,26 @@
 
           <div class="section-cta-wrap">
             <a href="#shop" class="btn btn--primary btn--section-cta" data-nav="shop" data-i18n="featured.viewAllBtn">VIEW ALL 5 ROASTS</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Below the fold: Coffee Match Quiz CTA Banner -->
+      <section class="home-section quiz-banner-section" id="home-quiz-banner" aria-labelledby="home-quiz-title">
+        <div class="section-inner">
+          <div class="quiz-banner quiz-banner--home">
+            <div class="quiz-banner-copy">
+              <p class="quiz-banner-eyebrow" data-i18n="quiz.eyebrow">PERSONALIZED MATCH IN 30 SECONDS</p>
+              <h2 id="home-quiz-title" class="quiz-banner-title" data-i18n="quiz.title">FIND YOUR PERFECT ROAST</h2>
+              <p class="quiz-banner-subtitle" data-i18n="quiz.subtitle">
+                Answer three quick questions and we will configure the ideal Brazilian coffee, grind, and delivery rhythm for you.
+              </p>
+            </div>
+            <div class="quiz-banner-actions">
+              <button type="button" class="btn btn--accent quiz-banner-btn" data-action="open-quiz" data-i18n="quiz.heroTriggerBtn" data-i18n-aria="quiz.openAria">
+                TAKE THE 30-SEC COFFEE QUIZ
+              </button>
+            </div>
           </div>
         </div>
       </section>
@@ -223,6 +248,21 @@
             Choose your favorite single-origin, espresso blend, natural decaf, or discovery flight.
           </p>
         </header>
+
+        <div class="quiz-banner quiz-banner--shop" id="shop-quiz-banner" role="region" aria-labelledby="shop-quiz-title">
+          <div class="quiz-banner-copy">
+            <p class="quiz-banner-eyebrow" data-i18n="quiz.eyebrow">PERSONALIZED MATCH IN 30 SECONDS</p>
+            <h2 id="shop-quiz-title" class="quiz-banner-title" data-i18n="quiz.title">FIND YOUR PERFECT ROAST</h2>
+            <p class="quiz-banner-subtitle" data-i18n="quiz.subtitle">
+              Answer three quick questions and we will configure the ideal Brazilian coffee, grind, and delivery rhythm for you.
+            </p>
+          </div>
+          <div class="quiz-banner-actions">
+            <button type="button" class="btn btn--accent quiz-banner-btn" data-action="open-quiz" data-i18n="quiz.heroTriggerBtn" data-i18n-aria="quiz.openAria">
+              TAKE THE 30-SEC COFFEE QUIZ
+            </button>
+          </div>
+        </div>
 
         <div class="shop-toolbar">
           <div class="shop-filters" id="shop-filters" role="group" data-i18n-aria="shop.filterCategoryLabel" aria-label="Category">
@@ -342,6 +382,20 @@
           </div>
         </div>
       </article>
+
+      <!-- Interactive Farm-to-Cup Origin & Impact Tracker -->
+      <section id="impact-tracker" class="impact-tracker-section" aria-labelledby="impact-heading">
+        <div class="impact-tracker-inner">
+          <header class="impact-header">
+            <p class="impact-eyebrow" data-i18n="impact.eyebrow">TRANSPARENT LOT DOSSIER</p>
+            <h2 id="impact-heading" class="impact-title" data-i18n="impact.title">SEED-TO-CUP IMPACT TRACKER</h2>
+            <p class="impact-subtitle" data-i18n="impact.subtitle">
+              Inspect the exact farm origin, price split, clean water liters, and rural school hours funded by every bag.
+            </p>
+          </header>
+          <div class="impact-tracker-content" id="impact-tracker-content"></div>
+        </div>
+      </section>
 
       <!-- Sticky / Floating Features CTA Bar + Toast -->
       <div class="features-cta-bar" id="features-cta-bar">
@@ -479,7 +533,25 @@
       </div>
     </section>
 
-    <!-- SHARED SITE FOOTER (Home & Shop) -->
+    <!-- VIEW 6: UX/UI CASE STUDY -->
+    <section id="view-case-study" class="view view--case-study" data-view="case-study" aria-labelledby="case-study-heading" hidden>
+      <div class="case-study-shell">
+        <header class="cs-hero">
+          <p class="cs-eyebrow" data-i18n="caseStudy.eyebrow">UX &amp; FRONT-END PORTFOLIO CASE STUDY</p>
+          <h1 id="case-study-heading" class="cs-title" data-i18n="caseStudy.title">DESIGNING OLÍVIA COFFEE BEANS</h1>
+          <p class="cs-subtitle" data-i18n="caseStudy.subtitle">
+            How a Figma eco-coffee prototype evolved into a bilingual, traceable DTC storefront built around real buyer pain points.
+          </p>
+          <div class="cs-hero-actions">
+            <a href="#shop" class="btn btn--accent" data-nav="shop" data-i18n="caseStudy.backToStoreBtn">EXPLORE LIVE STOREFRONT</a>
+            <button type="button" class="btn btn--outline-cream" data-action="open-quiz" data-i18n="caseStudy.tryQuizBtn">TRY THE COFFEE QUIZ</button>
+          </div>
+        </header>
+        <div class="case-study-content" id="case-study-content"></div>
+      </div>
+    </section>
+
+    <!-- SHARED SITE FOOTER (Home, Shop & Case Study) -->
     <footer class="site-footer" id="site-footer">
       <div class="footer-inner">
         <div class="footer-brand">
@@ -512,6 +584,7 @@
             <li><a href="#home" data-nav="home" data-i18n="nav.home">HOME</a></li>
             <li><a href="#shop" data-nav="shop" data-i18n="nav.shop">ROASTS</a></li>
             <li><a href="#features" data-nav="features" data-i18n="nav.features">OUR STORY</a></li>
+            <li><a href="#case-study" data-nav="case-study" data-i18n="nav.caseStudy">CASE STUDY</a></li>
             <li><a href="#cart" data-nav="cart" data-i18n="nav.cart">CART</a></li>
           </ul>
         </div>
@@ -537,7 +610,7 @@
 
       <div class="footer-bottom">
         <p class="footer-copy" data-i18n="footer.copyright">© 2026 Olívia Coffee Beans. All rights reserved.</p>
-        <p class="footer-attribution">Olívia Coffee Beans v0.1.1 · <span data-i18n="footer.demoNote">Interactive storefront experience — no real charges are processed.</span></p>
+        <p class="footer-attribution"><span data-i18n="footer.version">Olívia Coffee Beans v0.1.2</span> · <span data-i18n="footer.demoNote">Interactive storefront experience — no real charges are processed.</span></p>
       </div>
     </footer>
   </main>
@@ -713,6 +786,21 @@
           </p>
         </form>
       </div>
+    </div>
+  </div>
+
+  <!-- 3-STEP COFFEE MATCH QUIZ MODAL -->
+  <div id="quiz-modal" class="quiz-modal" role="dialog" aria-modal="true" aria-labelledby="quiz-modal-title" aria-hidden="true" hidden>
+    <div class="quiz-modal-backdrop" data-action="close-quiz"></div>
+    <div class="quiz-modal-dialog">
+      <button type="button" class="quiz-close-btn" id="quiz-close-btn" data-action="close-quiz" data-i18n-aria="quiz.closeAria" aria-label="Close coffee quiz">
+        <img src="assets/icon-close-dark.svg" width="24" height="24" alt="">
+      </button>
+      <div class="quiz-modal-header">
+        <p class="quiz-modal-eyebrow" data-i18n="quiz.eyebrow">PERSONALIZED MATCH IN 30 SECONDS</p>
+        <h2 class="quiz-modal-title" id="quiz-modal-title" data-i18n="quiz.title">FIND YOUR PERFECT ROAST</h2>
+      </div>
+      <div class="quiz-modal-body" id="quiz-modal-body"></div>
     </div>
   </div>
 </body>

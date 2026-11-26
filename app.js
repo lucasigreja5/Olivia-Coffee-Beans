@@ -2,7 +2,7 @@
   'use strict';
 
   var STORAGE_KEY = 'ocb_state_v1';
-  var VALID_VIEWS = ['home', 'shop', 'features', 'cart', 'confirmation'];
+  var VALID_VIEWS = ['home', 'shop', 'features', 'case-study', 'cart', 'confirmation'];
 
   var CATALOG = window.OCB_CATALOG || {};
   var I18N = window.OCB_I18N || {};
@@ -505,6 +505,11 @@
   }
 
   window.addEventListener('hashchange', function () {
+    var rawHash = window.location.hash.replace(/^#/, '').toLowerCase();
+    if (rawHash === 'quiz') {
+      window.dispatchEvent(new CustomEvent('ocb:open-quiz'));
+      return;
+    }
     setView(getHashView(), false);
   });
 
@@ -1335,6 +1340,11 @@
         closeCartDrawer();
       } else if (action === 'close-product-modal') {
         closeProductModal();
+      } else if (action === 'open-quiz') {
+        closeMobileDrawer();
+        window.dispatchEvent(new CustomEvent('ocb:open-quiz'));
+      } else if (action === 'close-quiz') {
+        window.dispatchEvent(new CustomEvent('ocb:close-quiz'));
       }
       return;
     }
@@ -1411,6 +1421,7 @@
     }
 
     saveState();
+    window.dispatchEvent(new CustomEvent('ocb:langchange', { detail: { lang: state.lang } }));
   }
 
   langButtons.forEach(function (btn) {
@@ -1788,13 +1799,30 @@
   });
 
   // --------------------------------------------------------------------------
+  // Public Bridge for Milestone 2 Features
+  // --------------------------------------------------------------------------
+  window.OCB_APP = {
+    getLang: function () { return state.lang; },
+    setView: setView,
+    openProductModal: openProductModal,
+    addToCart: addToCart,
+    openCartDrawer: openCartDrawer,
+    t: t,
+    getCartTotals: calculateTotals
+  };
+
+  // --------------------------------------------------------------------------
   // Initialize
   // --------------------------------------------------------------------------
   loadState();
+  var initialHash = window.location.hash.replace(/^#/, '').toLowerCase();
   var initialView = getHashView();
   if (initialView === 'cart') {
     ensureCheckoutSeedIfNeeded();
   }
   applyLanguage(state.lang);
   setView(initialView, false);
+  if (initialHash === 'quiz') {
+    window.dispatchEvent(new CustomEvent('ocb:open-quiz'));
+  }
 })();
