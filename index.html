@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Olívia Coffee Beans — Eco-First Espresso</title>
+  <meta name="description" content="A better way to enjoy coffee: carbon-neutral, totally transparent, and focused on the people that make it.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Lato:wght@400;500;700;900&family=Merriweather:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body data-view="home">
+  <header class="site-header" id="site-header">
+    <div class="header-inner">
+      <a href="#home" class="brand-logo" aria-label="Olívia Coffee Beans Home" data-nav="home">
+        <img class="logo-img logo-img--cream" src="assets/logo-cream.svg" width="285" height="93" alt="Olívia Coffee Beans">
+        <img class="logo-img logo-img--green" src="assets/logo-green.svg" width="285" height="93" alt="Olívia Coffee Beans">
+      </a>
+
+      <nav class="desktop-nav" aria-label="Primary Navigation">
+        <a href="#home" class="nav-link is-active" data-nav="home">HOME</a>
+        <a href="#features" class="nav-link" data-nav="features">FEATURES</a>
+        <a href="#cart" class="nav-link" data-nav="cart">CART <span class="nav-cart-count" id="nav-cart-count" hidden>(1)</span></a>
+      </nav>
+
+      <button type="button" class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-drawer">
+        <img class="menu-icon menu-icon--cream" src="assets/nav-menu-cream.svg" width="125" height="27" alt="">
+        <img class="menu-icon menu-icon--green" src="assets/nav-menu-green.svg" width="125" height="27" alt="">
+      </button>
+    </div>
+  </header>
+
+  <div class="drawer-backdrop" id="drawer-backdrop" hidden></div>
+  <aside class="mobile-drawer" id="mobile-drawer" aria-label="Mobile Navigation" aria-hidden="true">
+    <button type="button" class="drawer-close-btn" id="drawer-close-btn" aria-label="Close navigation menu">
+      <img src="assets/icon-close-dark.svg" width="32" height="32" alt="">
+    </button>
+    <div class="drawer-content">
+      <a href="#home" class="drawer-logo" data-nav="home" aria-label="Olívia Coffee Beans Home">
+        <img src="assets/logo-dark.svg" width="141" height="46" alt="Olívia Coffee Beans">
+      </a>
+      <nav class="drawer-links" aria-label="Mobile Menu Links">
+        <a href="#home" class="drawer-link" data-nav="home">HOME</a>
+        <a href="#features" class="drawer-link" data-nav="features">FEATURES</a>
+        <a href="#cart" class="drawer-link" data-nav="cart">CART <span class="drawer-cart-count" id="drawer-cart-count" hidden>(1)</span></a>
+      </nav>
+      <button type="button" class="drawer-newsletter-btn" data-action="open-newsletter">NEWSLETTER</button>
+    </div>
+  </aside>
+
+  <main id="app-main">
+    <!-- VIEW 1: HOMEPAGE -->
+    <section id="view-home" class="view view--home is-active" data-view="home" aria-labelledby="hero-heading">
+      <div class="home-hero">
+        <h1 id="hero-heading" class="hero-title">
+          <span class="hero-line-cream">ECO-FIRST</span>
+          <span class="hero-line-gold">ESPRESSO</span>
+        </h1>
+
+        <div class="hero-media" aria-hidden="true">
+          <div class="hero-media-frame">
+            <img class="hero-img hero-img--desktop" src="assets/hero-espresso-desktop.png" alt="Hand holding an iced espresso glass">
+            <img class="hero-img hero-img--mobile" src="assets/hero-espresso-mobile.png" alt="Hand holding an iced espresso glass">
+          </div>
+        </div>
+
+        <div class="hero-bottom">
+          <p class="hero-subtitle">
+            A better way to enjoy coffee: carbon-neutral, totally transparent, and focused on the people that make it.
+            <strong class="hero-highlight">And it’s also delicious.</strong>
+          </p>
+
+          <div class="hero-actions">
+            <button type="button" class="btn btn--accent btn--hero" data-action="buy-now">BUY NOW</button>
+            <a href="#features" class="btn btn--outline-cream btn--hero" data-nav="features">LEARN MORE</a>
+          </div>
+
+          <button type="button" class="newsletter-trigger" data-action="open-newsletter">
+            Join our newsletter for roastery updates &amp; offers
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- VIEW 2: PRODUCT DETAILS / FEATURES -->
+    <section id="view-features" class="view view--features" data-view="features" aria-label="Product Features and Commitments" hidden>
+      <!-- Band 1: Brewing Social Equity -->
+      <article id="brewing-equity" class="story-band story-band--intro">
+        <div class="story-bg" aria-hidden="true">
+          <img class="story-bg-img story-bg-img--roasting" src="assets/story-roasting.png" alt="">
+          <div class="story-gradient story-gradient--intro"></div>
+        </div>
+        <div class="story-inner">
+          <div class="story-copy story-copy--intro">
+            <h2 class="story-heading reveal-item">BREWING SOCIAL EQUITY</h2>
+            <p class="story-body reveal-item">
+              We bridge the gap between premium quality and ethical responsibility. By bypassing middlemen and using regenerative farming, we ensure every bean is 100% traceable and carbon-neutral. It’s a high-end coffee designed for those who refuse to compromise on taste or the planet’s future.
+            </p>
+            <h3 class="story-subheading reveal-item">LEARN MORE ABOUT OUR 3 COMMITMENTS</h3>
+            <div class="commitments-row reveal-item">
+              <button type="button" class="commitment-btn" data-scroll-target="farm-to-cup">
+                <img class="commitment-icon" src="assets/badge-traceable.svg" width="124" height="124" alt="">
+                <span class="commitment-label">FULLY<br>TRACEABLE</span>
+              </button>
+              <button type="button" class="commitment-btn" data-scroll-target="zero-waste">
+                <img class="commitment-icon" src="assets/badge-carbon.svg" width="124" height="124" alt="">
+                <span class="commitment-label">CARBON<br>NEUTRAL</span>
+              </button>
+              <button type="button" class="commitment-btn" data-scroll-target="people-over-profit">
+                <img class="commitment-icon" src="assets/badge-community.svg" width="124" height="124" alt="">
+                <span class="commitment-label">COMMUNITY<br>DRIVEN</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Band 2: From Farm to Cup -->
+      <article id="farm-to-cup" class="story-band story-band--farm">
+        <div class="story-bg" aria-hidden="true">
+          <img class="story-bg-img story-bg-img--farm-mobile" src="assets/story-farm-mobile.png" alt="">
+          <div class="story-bg-rotate-wrap">
+            <img class="story-bg-img story-bg-img--farm-desktop" src="assets/story-farm-desktop.png" alt="">
+          </div>
+          <div class="story-gradient story-gradient--right"></div>
+        </div>
+        <div class="story-inner story-inner--right">
+          <div class="story-copy story-copy--feature">
+            <h2 class="story-heading">FROM FARM TO CUP</h2>
+            <p class="story-body">
+              We know the source of every bean we roast. Using direct-trade partnerships we can ensure total transparency and fair wages for every farmer.
+            </p>
+          </div>
+        </div>
+      </article>
+
+      <!-- Band 3: Zero Waste Roasting -->
+      <article id="zero-waste" class="story-band story-band--zerowaste">
+        <div class="story-bg" aria-hidden="true">
+          <img class="story-bg-img story-bg-img--zw-mobile" src="assets/story-zerowaste-mobile.png" alt="">
+          <div class="story-bg-rotate-wrap">
+            <img class="story-bg-img story-bg-img--zw-desktop" src="assets/story-zerowaste-desktop.png" alt="">
+          </div>
+          <div class="story-gradient story-gradient--left"></div>
+        </div>
+        <div class="story-inner story-inner--left">
+          <div class="story-copy story-copy--feature">
+            <h2 class="story-heading">ZERO WASTE ROASTING</h2>
+            <p class="story-body">
+              From solar-powered roasts to compostable packaging, we ensure your morning caffeine fix leaves no footprint behind.
+            </p>
+          </div>
+        </div>
+      </article>
+
+      <!-- Band 4: People Over Profit -->
+      <article id="people-over-profit" class="story-band story-band--farmer">
+        <div class="story-bg" aria-hidden="true">
+          <img class="story-bg-img story-bg-img--farmer" src="assets/story-farmer.png" alt="">
+          <div class="story-gradient story-gradient--right"></div>
+        </div>
+        <div class="story-inner story-inner--right">
+          <div class="story-copy story-copy--feature">
+            <h2 class="story-heading">PEOPLE OVER PROFIT</h2>
+            <p class="story-body">
+              A portion of every sale funds schools and clean water projects in our growing regions. Your coffee helps us build a better future.
+            </p>
+          </div>
+        </div>
+      </article>
+
+      <!-- Sticky / Floating Features CTA Bar + Toast -->
+      <div class="features-cta-bar" id="features-cta-bar">
+        <div class="cart-toast" id="cart-toast" role="status" aria-live="polite" hidden>
+          <button type="button" class="toast-close-btn" id="toast-close-btn" aria-label="Dismiss notification">
+            <img src="assets/icon-close-dark.svg" width="21" height="21" alt="">
+          </button>
+          <div class="toast-bag-thumb" aria-hidden="true">
+            <img class="bag-photo" src="assets/coffee-bag.png" alt="">
+            <img class="bag-logo" src="assets/logo-green.svg" width="40" height="13" alt="">
+          </div>
+          <div class="toast-text">
+            <p class="toast-title">ADDED TO CART!</p>
+            <p class="toast-subtitle" id="toast-subtitle">1x Olivia’s Coffee Beans (250g) - $24.00</p>
+          </div>
+          <span class="toast-pointer" aria-hidden="true"></span>
+        </div>
+
+        <div class="features-cta-buttons">
+          <button type="button" class="btn btn--cream btn--features-add" id="add-to-cart-btn">ADD TO CART</button>
+          <a href="#cart" class="btn btn--features-checkout" id="checkout-cta-btn" data-nav="cart">
+            <span class="desktop-only-text">GO TO </span>CHECKOUT
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- VIEW 3: CHECKOUT -->
+    <section id="view-cart" class="view view--cart" data-view="cart" aria-labelledby="cart-heading" hidden>
+      <div class="checkout-container">
+        <div class="cart-card">
+          <h2 id="cart-heading" class="cart-card-title">ITEMS IN CART</h2>
+
+          <div class="cart-item-row">
+            <div class="cart-bag-thumb" aria-hidden="true">
+              <img class="bag-photo" src="assets/coffee-bag.png" alt="">
+              <img class="bag-logo" src="assets/logo-green.svg" width="129" height="43" alt="">
+            </div>
+
+            <div class="cart-item-info">
+              <p class="cart-item-title">
+                <span id="cart-qty-label">1</span>x Olivia’s Coffee Beans <span class="desktop-only-text">Starter Pack </span>(250g) - $<span id="cart-item-price">24.00</span>
+              </p>
+              <p class="cart-item-desc">
+                Our Starter Pack includes everything you need to start enjoying at your own home some Eco-First Espresso!
+              </p>
+              <div class="cart-qty-controls" aria-label="Quantity controls">
+                <button type="button" class="qty-btn" id="qty-decrease" aria-label="Decrease quantity">−</button>
+                <span class="qty-value" id="qty-value" aria-live="polite">1</span>
+                <button type="button" class="qty-btn" id="qty-increase" aria-label="Increase quantity">+</button>
+              </div>
+              <div class="cart-price-breakdown cart-price-breakdown--mobile">
+                <p>Total Items Price: $<span class="js-subtotal">24.00</span></p>
+                <p>Shipping: $0.00</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="cart-card-footer">
+            <div class="cart-price-breakdown cart-price-breakdown--desktop">
+              <p>Total Items Price: $<span class="js-subtotal">24.00</span></p>
+              <p>Shipping: $0.00</p>
+            </div>
+            <p class="cart-final-price">FINAL PRICE: $<span id="cart-final-price">24.00</span></p>
+          </div>
+        </div>
+
+        <form id="checkout-form" class="checkout-form" novalidate>
+          <div class="form-field" data-field="email">
+            <label for="field-email" class="field-label">Email</label>
+            <input type="email" id="field-email" name="email" class="field-input" placeholder="name.surname@email.com" autocomplete="email" required>
+            <span class="field-error" id="error-email" aria-live="polite"></span>
+          </div>
+
+          <div class="form-field" data-field="address">
+            <label for="field-address" class="field-label">Address</label>
+            <input type="text" id="field-address" name="address" class="field-input" placeholder="Address Line" autocomplete="street-address" required>
+            <span class="field-error" id="error-address" aria-live="polite"></span>
+          </div>
+
+          <div class="form-field" data-field="cardName">
+            <label for="field-card-name" class="field-label">Name on Credit Card</label>
+            <input type="text" id="field-card-name" name="cardName" class="field-input" placeholder="Name Surname" autocomplete="cc-name" required>
+            <span class="field-error" id="error-cardName" aria-live="polite"></span>
+          </div>
+
+          <div class="form-field" data-field="cardNumber">
+            <label for="field-card-number" class="field-label">Card Number</label>
+            <input type="text" id="field-card-number" name="cardNumber" class="field-input" inputmode="numeric" maxlength="19" placeholder="0000 0000 0000 0000" autocomplete="cc-number" required>
+            <span class="field-error" id="error-cardNumber" aria-live="polite"></span>
+          </div>
+
+          <div class="form-row-split">
+            <div class="form-field" data-field="expiry">
+              <label for="field-expiry" class="field-label">Card Valid Date</label>
+              <input type="text" id="field-expiry" name="expiry" class="field-input" inputmode="numeric" maxlength="5" placeholder="MM/YY" autocomplete="cc-exp" required>
+              <span class="field-error" id="error-expiry" aria-live="polite"></span>
+            </div>
+
+            <div class="form-field form-field--cvc" data-field="cvc">
+              <div class="label-with-tip">
+                <label for="field-cvc" class="field-label">CVC</label>
+                <div class="cvc-tip-anchor">
+                  <button type="button" class="cvc-info-btn" id="cvc-info-btn" aria-label="What is CVC?" aria-expanded="false" aria-describedby="cvc-tooltip">i</button>
+                  <div class="cvc-tooltip" id="cvc-tooltip" role="tooltip" hidden>
+                    <span>3 digits from the back of your card</span>
+                    <span class="cvc-tooltip-pointer" aria-hidden="true"></span>
+                  </div>
+                </div>
+              </div>
+              <input type="text" id="field-cvc" name="cvc" class="field-input" inputmode="numeric" maxlength="4" placeholder="000" autocomplete="cc-csc" required>
+              <span class="field-error" id="error-cvc" aria-live="polite"></span>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn--primary btn--purchase" id="purchase-btn">PURCHASE</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- VIEW 4: ORDER CONFIRMATION -->
+    <section id="view-confirmation" class="view view--confirmation" data-view="confirmation" aria-labelledby="confirm-heading" hidden>
+      <div class="confirmation-bg" aria-hidden="true">
+        <img class="confirmation-bg-img" src="assets/confirmation-bg.png" alt="">
+        <div class="confirmation-top-fade"></div>
+      </div>
+
+      <div class="confirmation-stage">
+        <div class="confirmation-card">
+          <h2 id="confirm-heading" class="confirmation-title">CONGRATULATIONS!</h2>
+          <p class="confirmation-subtitle">Your order is already on the way!</p>
+          <p class="confirmation-invite">WHY NOT TELL YOUR FRIENDS ABOUT IT AND INVITE THEM OVER FOR A CUP?</p>
+          <button type="button" class="social-share-btn" id="social-share-btn" aria-label="Share your order with friends">
+            <img src="assets/social-icons.svg" width="185" height="51" alt="Instagram, X, and Reddit">
+          </button>
+          <p class="share-feedback" id="share-feedback" aria-live="polite"></p>
+          <button type="button" class="btn btn--primary btn--return-home" data-action="return-home">RETURN HOME</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- PURCHASE BOX-PACKING ANIMATION OVERLAY -->
+  <div class="purchase-animation" id="purchase-animation" aria-hidden="true" hidden>
+    <div class="pack-stage" id="pack-stage">
+      <div class="pack-lid" id="pack-lid"></div>
+      <img class="pack-cup" id="pack-cup" src="assets/checkout-cup.svg" width="68" height="75" alt="">
+      <div class="pack-box" id="pack-box"></div>
+    </div>
+  </div>
+
+  <!-- NEWSLETTER POPUP MODAL -->
+  <div class="newsletter-modal" id="newsletter-modal" role="dialog" aria-modal="true" aria-labelledby="newsletter-title" aria-hidden="true" hidden>
+    <div class="newsletter-backdrop" data-action="close-newsletter"></div>
+    <div class="newsletter-shell">
+      <div class="newsletter-bg-wrap" aria-hidden="true">
+        <img class="newsletter-beans-bg" src="assets/newsletter-beans-bg.png" alt="">
+      </div>
+      <button type="button" class="newsletter-close-btn" id="newsletter-close-btn" data-action="close-newsletter" aria-label="Close newsletter popup">
+        <img src="assets/icon-close-light.svg" width="31" height="32" alt="">
+      </button>
+      <div class="newsletter-card">
+        <div class="newsletter-glass-wrap" aria-hidden="true">
+          <img class="newsletter-glass" src="assets/newsletter-glass.png" alt="">
+        </div>
+        <h2 id="newsletter-title" class="newsletter-title">JOIN OUR NEWSLETTER!</h2>
+        <p class="newsletter-subtitle">And don’t miss out on the latest news, promotions and deals on our products!</p>
+
+        <form id="newsletter-form" class="newsletter-form" novalidate>
+          <div class="form-field newsletter-field">
+            <label for="newsletter-email" class="field-label">Email Address</label>
+            <input type="email" id="newsletter-email" class="field-input field-input--white" placeholder="youremail@mail.com" required>
+            <span class="field-error" id="newsletter-error" aria-live="polite"></span>
+          </div>
+          <button type="submit" class="btn btn--primary btn--subscribe">SUBSCRIBE</button>
+          <p class="newsletter-success" id="newsletter-success" aria-live="polite" hidden>
+            You’re subscribed! Watch your inbox for our next small-batch roast.
+          </p>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
