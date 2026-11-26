@@ -1776,13 +1776,17 @@ input:focus-visible {
 
   /* Checkout Desktop Layout */
   .view--cart {
-    padding: calc(var(--header-height-desktop) + 28px) clamp(40px, 6.9vw, 100px) 64px;
+    padding: calc(var(--header-height-desktop) + 20px) clamp(40px, 6.9vw, 100px) 40px;
   }
 
   .checkout-container {
     grid-template-columns: 1fr 1fr;
     gap: 32px;
     align-items: stretch;
+  }
+
+  .checkout-form {
+    gap: 10px;
   }
 
   .cart-card {
@@ -1826,12 +1830,12 @@ input:focus-visible {
   }
 
   .field-label {
-    font-size: 22px;
+    font-size: 19px;
   }
 
   .field-input {
-    height: 60px;
-    font-size: 22px;
+    height: 52px;
+    font-size: 20px;
   }
 
   .cvc-info-btn {
@@ -1842,8 +1846,9 @@ input:focus-visible {
   }
 
   .btn--purchase {
-    height: 72px;
-    font-size: 32px;
+    margin-top: 6px;
+    height: 64px;
+    font-size: 30px;
   }
 
   /* Packing Animation Desktop Sizes */
