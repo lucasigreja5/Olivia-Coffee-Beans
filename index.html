@@ -3,29 +3,39 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Olívia Coffee Beans — Eco-First Espresso</title>
+  <title>Olívia Coffee Beans — Eco-First Brazilian Specialty Coffee</title>
   <meta name="description" content="A better way to enjoy coffee: carbon-neutral, totally transparent, and focused on the people that make it.">
+  <link rel="icon" type="image/svg+xml" href="assets/logo-green.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Lato:wght@400;500;700;900&family=Merriweather:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <script src="data/products.js" defer></script>
+  <script src="data/i18n.js" defer></script>
   <script src="app.js" defer></script>
 </head>
 <body data-view="home">
   <header class="site-header" id="site-header">
     <div class="header-inner">
-      <a href="#home" class="brand-logo" aria-label="Olívia Coffee Beans Home" data-nav="home">
+      <a href="#home" class="brand-logo" aria-label="Olívia Coffee Beans Home" data-i18n-aria="nav.homeAria" data-nav="home">
         <img class="logo-img logo-img--cream" src="assets/logo-cream.svg" width="285" height="93" alt="Olívia Coffee Beans">
         <img class="logo-img logo-img--green" src="assets/logo-green.svg" width="285" height="93" alt="Olívia Coffee Beans">
       </a>
 
       <nav class="desktop-nav" aria-label="Primary Navigation">
-        <a href="#home" class="nav-link is-active" data-nav="home">HOME</a>
-        <a href="#features" class="nav-link" data-nav="features">FEATURES</a>
-        <a href="#cart" class="nav-link" data-nav="cart">CART <span class="nav-cart-count" id="nav-cart-count" hidden>(1)</span></a>
+        <a href="#home" class="nav-link is-active" data-nav="home" data-i18n="nav.home">HOME</a>
+        <a href="#shop" class="nav-link" data-nav="shop" data-i18n="nav.shop">ROASTS</a>
+        <a href="#features" class="nav-link" data-nav="features" data-i18n="nav.features">OUR STORY</a>
+        <button type="button" class="nav-link nav-cart-btn" id="header-cart-btn" data-action="open-cart-drawer" data-i18n-aria="nav.openCartAria" aria-label="Open shopping cart drawer">
+          <span data-i18n="nav.cart">CART</span> <span class="nav-cart-count" id="nav-cart-count" hidden>(0)</span>
+        </button>
+        <div class="lang-toggle" role="group" data-i18n-aria="common.languageToggleAria" aria-label="Switch language between English and Brazilian Portuguese">
+          <button type="button" class="lang-btn is-active" data-lang="en" aria-pressed="true">EN</button>
+          <button type="button" class="lang-btn" data-lang="pt-BR" aria-pressed="false">PT</button>
+        </div>
       </nav>
 
-      <button type="button" class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-drawer">
+      <button type="button" class="mobile-menu-btn" id="mobile-menu-btn" data-i18n-aria="nav.openMenuAria" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-drawer">
         <img class="menu-icon menu-icon--cream" src="assets/nav-menu-cream.svg" width="125" height="27" alt="">
         <img class="menu-icon menu-icon--green" src="assets/nav-menu-green.svg" width="125" height="27" alt="">
       </button>
@@ -34,57 +44,217 @@
 
   <div class="drawer-backdrop" id="drawer-backdrop" hidden></div>
   <aside class="mobile-drawer" id="mobile-drawer" aria-label="Mobile Navigation" aria-hidden="true">
-    <button type="button" class="drawer-close-btn" id="drawer-close-btn" aria-label="Close navigation menu">
+    <button type="button" class="drawer-close-btn" id="drawer-close-btn" data-i18n-aria="nav.closeMenuAria" aria-label="Close navigation menu">
       <img src="assets/icon-close-dark.svg" width="32" height="32" alt="">
     </button>
     <div class="drawer-content">
-      <a href="#home" class="drawer-logo" data-nav="home" aria-label="Olívia Coffee Beans Home">
+      <a href="#home" class="drawer-logo" data-nav="home" data-i18n-aria="nav.homeAria" aria-label="Olívia Coffee Beans Home">
         <img src="assets/logo-dark.svg" width="141" height="46" alt="Olívia Coffee Beans">
       </a>
       <nav class="drawer-links" aria-label="Mobile Menu Links">
-        <a href="#home" class="drawer-link" data-nav="home">HOME</a>
-        <a href="#features" class="drawer-link" data-nav="features">FEATURES</a>
-        <a href="#cart" class="drawer-link" data-nav="cart">CART <span class="drawer-cart-count" id="drawer-cart-count" hidden>(1)</span></a>
+        <a href="#home" class="drawer-link" data-nav="home" data-i18n="nav.home">HOME</a>
+        <a href="#shop" class="drawer-link" data-nav="shop" data-i18n="nav.shop">ROASTS</a>
+        <a href="#features" class="drawer-link" data-nav="features" data-i18n="nav.features">OUR STORY</a>
+        <button type="button" class="drawer-link drawer-cart-btn" id="drawer-cart-btn" data-action="open-cart-drawer" data-i18n-aria="nav.openCartAria" aria-label="Open shopping cart drawer">
+          <span data-i18n="nav.cart">CART</span> <span class="drawer-cart-count" id="drawer-cart-count" hidden>(0)</span>
+        </button>
       </nav>
-      <button type="button" class="drawer-newsletter-btn" data-action="open-newsletter">NEWSLETTER</button>
+      <div class="lang-toggle lang-toggle--drawer" role="group" data-i18n-aria="common.languageToggleAria" aria-label="Switch language between English and Brazilian Portuguese">
+        <button type="button" class="lang-btn is-active" data-lang="en" aria-pressed="true">EN</button>
+        <button type="button" class="lang-btn" data-lang="pt-BR" aria-pressed="false">PT</button>
+      </div>
+      <button type="button" class="drawer-newsletter-btn" data-action="open-newsletter" data-i18n="nav.newsletter">NEWSLETTER</button>
     </div>
   </aside>
 
   <main id="app-main">
     <!-- VIEW 1: HOMEPAGE -->
     <section id="view-home" class="view view--home is-active" data-view="home" aria-labelledby="hero-heading">
-      <div class="home-hero">
-        <h1 id="hero-heading" class="hero-title">
-          <span class="hero-line-cream">ECO-FIRST</span>
-          <span class="hero-line-gold">ESPRESSO</span>
-        </h1>
+      <div class="home-hero-band">
+        <div class="home-hero">
+          <h1 id="hero-heading" class="hero-title">
+            <span class="hero-line-cream" data-i18n="hero.line1">ECO-FIRST</span>
+            <span class="hero-line-gold" data-i18n="hero.line2">ESPRESSO</span>
+          </h1>
 
-        <div class="hero-media" aria-hidden="true">
-          <div class="hero-media-frame">
-            <img class="hero-img hero-img--desktop" src="assets/hero-espresso-desktop.png" alt="Hand holding an iced espresso glass">
-            <img class="hero-img hero-img--mobile" src="assets/hero-espresso-mobile.png" alt="Hand holding an iced espresso glass">
+          <div class="hero-media" aria-hidden="true">
+            <div class="hero-media-frame">
+              <img class="hero-img hero-img--desktop" src="assets/hero-espresso-desktop.png" alt="Hand holding an iced espresso glass">
+              <img class="hero-img hero-img--mobile" src="assets/hero-espresso-mobile.png" alt="Hand holding an iced espresso glass">
+            </div>
+          </div>
+
+          <div class="hero-bottom">
+            <p class="hero-subtitle">
+              <span data-i18n="hero.subtitle">A better way to enjoy coffee: carbon-neutral, totally transparent, and focused on the people that make it.</span>
+              <strong class="hero-highlight" data-i18n="hero.highlight">And it’s also delicious.</strong>
+            </p>
+
+            <div class="hero-actions">
+              <button type="button" class="btn btn--accent btn--hero" data-action="buy-now" data-i18n="hero.buyNow">BUY NOW</button>
+              <a href="#features" class="btn btn--outline-cream btn--hero" data-nav="features" data-i18n="hero.learnMore">LEARN MORE</a>
+            </div>
+
+            <button type="button" class="newsletter-trigger" data-action="open-newsletter" data-i18n="hero.newsletterTrigger">
+              Join our newsletter for roastery updates &amp; offers
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Below the fold: Featured Roasts -->
+      <section class="home-section featured-section" aria-labelledby="featured-heading">
+        <div class="section-inner">
+          <header class="section-header">
+            <p class="section-eyebrow" data-i18n="featured.eyebrow">SMALL-BATCH BRAZILIAN SPECIALTY</p>
+            <h2 id="featured-heading" class="section-title" data-i18n="featured.title">FEATURED ROASTS</h2>
+            <p class="section-subtitle" data-i18n="featured.subtitle">
+              Solar-roasted to order from family farms in Minas Gerais and Bahia. Configure grind, bag size, or a 15% off subscription.
+            </p>
+          </header>
+
+          <div class="products-grid products-grid--featured" id="featured-products-grid"></div>
+
+          <div class="section-cta-wrap">
+            <a href="#shop" class="btn btn--primary btn--section-cta" data-nav="shop" data-i18n="featured.viewAllBtn">VIEW ALL 5 ROASTS</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Below the fold: Value Props / Benefits -->
+      <section class="home-section benefits-section" aria-labelledby="benefits-heading">
+        <div class="section-inner">
+          <header class="section-header section-header--light">
+            <p class="section-eyebrow" data-i18n="valueProps.eyebrow">WHY OLÍVIA</p>
+            <h2 id="benefits-heading" class="section-title" data-i18n="valueProps.title">BREWING SOCIAL EQUITY</h2>
+            <p class="section-subtitle" data-i18n="valueProps.subtitle">
+              Every pouch connects transparent Brazilian terroir with measurable climate and community impact.
+            </p>
+          </header>
+
+          <div class="benefits-grid">
+            <article class="benefit-card">
+              <img class="benefit-icon" src="assets/badge-traceable.svg" width="84" height="84" alt="">
+              <h3 class="benefit-title" data-i18n="valueProps.pillar1Title">100% Traceable Lots</h3>
+              <p class="benefit-desc" data-i18n="valueProps.pillar1Desc">
+                Direct partnerships with Cerrado Mineiro, Sul de Minas, and Chapada Diamantina growers earning 35–42% above commodity benchmarks.
+              </p>
+            </article>
+
+            <article class="benefit-card">
+              <img class="benefit-icon" src="assets/badge-carbon.svg" width="84" height="84" alt="">
+              <h3 class="benefit-title" data-i18n="valueProps.pillar2Title">Carbon-Neutral Roasting</h3>
+              <p class="benefit-desc" data-i18n="valueProps.pillar2Desc">
+                Solar-powered small-batch roasting paired with 100% home-compostable kraft bags and verified agroforestry offsets.
+              </p>
+            </article>
+
+            <article class="benefit-card">
+              <img class="benefit-icon" src="assets/badge-community.svg" width="84" height="84" alt="">
+              <h3 class="benefit-title" data-i18n="valueProps.pillar3Title">Community Reinvestment</h3>
+              <p class="benefit-desc" data-i18n="valueProps.pillar3Desc">
+                Every bag funds rural school supplies and clean-water filtration projects across our partner coffee regions.
+              </p>
+            </article>
+          </div>
+
+          <div class="section-cta-wrap">
+            <a href="#features" class="btn btn--outline-cream btn--section-cta" data-nav="features" data-i18n="valueProps.ctaStory">READ FULL IMPACT STORY</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Below the fold: Brew Guide -->
+      <section class="home-section brew-guide-section" aria-labelledby="brew-heading">
+        <div class="section-inner">
+          <header class="section-header">
+            <p class="section-eyebrow" data-i18n="brewing.eyebrow">DIAL IT IN AT HOME</p>
+            <h2 id="brew-heading" class="section-title" data-i18n="brewing.title">BEGINNER BREWING GUIDES</h2>
+            <p class="section-subtitle" data-i18n="brewing.subtitle">
+              Simple, foolproof recipes tuned for our Brazilian roasts across your favorite brewer.
+            </p>
+          </header>
+
+          <div class="brew-tabs" id="brew-tabs" role="tablist" data-i18n-aria="brewing.tabAria" aria-label="Brewing method selection"></div>
+          <div class="brew-guide-panel" id="brew-guide-panel" role="tabpanel"></div>
+        </div>
+      </section>
+
+      <!-- Below the fold: Reviews -->
+      <section class="home-section reviews-section" aria-labelledby="reviews-heading">
+        <div class="section-inner">
+          <header class="section-header">
+            <p class="section-eyebrow" data-i18n="reviews.eyebrow">COMMUNITY VOICES</p>
+            <h2 id="reviews-heading" class="section-title" data-i18n="reviews.title">LOVED BY HOME BARISTAS</h2>
+            <p class="section-subtitle" data-i18n="reviews.subtitle">
+              Real notes from subscribers brewing Olívia across Brazil and the US.
+            </p>
+          </header>
+
+          <div class="reviews-grid" id="reviews-grid"></div>
+        </div>
+      </section>
+
+      <!-- Below the fold: FAQ -->
+      <section class="home-section faq-section" aria-labelledby="faq-heading">
+        <div class="section-inner">
+          <header class="section-header">
+            <p class="section-eyebrow" data-i18n="faq.eyebrow">GOOD TO KNOW</p>
+            <h2 id="faq-heading" class="section-title" data-i18n="faq.title">FREQUENTLY ASKED QUESTIONS</h2>
+            <p class="section-subtitle" data-i18n="faq.subtitle">
+              Everything about roast-to-order freshness, grind selection, subscriptions, and compostable bags.
+            </p>
+          </header>
+
+          <div class="faq-list" id="faq-list"></div>
+        </div>
+      </section>
+    </section>
+
+    <!-- VIEW 2: SHOP CATALOG -->
+    <section id="view-shop" class="view view--shop" data-view="shop" aria-labelledby="shop-heading" hidden>
+      <div class="shop-container">
+        <header class="shop-header">
+          <p class="section-eyebrow" data-i18n="shop.eyebrow">BRAZILIAN SPECIALTY CATALOG</p>
+          <h1 id="shop-heading" class="shop-title" data-i18n="shop.title">OUR ROASTS &amp; FLIGHTS</h1>
+          <p class="shop-subtitle" data-i18n="shop.subtitle">
+            Choose your favorite single-origin, espresso blend, natural decaf, or discovery flight.
+          </p>
+        </header>
+
+        <div class="shop-toolbar">
+          <div class="shop-filters" id="shop-filters" role="group" data-i18n-aria="shop.filterCategoryLabel" aria-label="Category">
+            <button type="button" class="filter-pill is-active" data-category="all" data-i18n="shop.filterAll">All Roasts</button>
+            <button type="button" class="filter-pill" data-category="espresso" data-i18n="shop.filterEspresso">Espresso</button>
+            <button type="button" class="filter-pill" data-category="single-origin" data-i18n="shop.filterSingleOrigin">Single-Origin</button>
+            <button type="button" class="filter-pill" data-category="decaf" data-i18n="shop.filterDecaf">Decaf</button>
+            <button type="button" class="filter-pill" data-category="bundle" data-i18n="shop.filterBundle">Bundles</button>
+          </div>
+
+          <div class="shop-meta-controls">
+            <span class="shop-results-count" id="shop-results-count">5 roasts shown</span>
+            <label class="shop-sort-wrap" for="shop-sort">
+              <span class="shop-sort-label" data-i18n="shop.sortLabel">Sort by</span>
+              <select id="shop-sort" class="shop-sort-select">
+                <option value="featured" data-i18n="shop.sortFeatured">Featured</option>
+                <option value="price-asc" data-i18n="shop.sortPriceAsc">Price: Low to High</option>
+                <option value="price-desc" data-i18n="shop.sortPriceDesc">Price: High to Low</option>
+              </select>
+            </label>
           </div>
         </div>
 
-        <div class="hero-bottom">
-          <p class="hero-subtitle">
-            A better way to enjoy coffee: carbon-neutral, totally transparent, and focused on the people that make it.
-            <strong class="hero-highlight">And it’s also delicious.</strong>
-          </p>
+        <div class="products-grid shop-grid" id="shop-products-grid"></div>
 
-          <div class="hero-actions">
-            <button type="button" class="btn btn--accent btn--hero" data-action="buy-now">BUY NOW</button>
-            <a href="#features" class="btn btn--outline-cream btn--hero" data-nav="features">LEARN MORE</a>
-          </div>
-
-          <button type="button" class="newsletter-trigger" data-action="open-newsletter">
-            Join our newsletter for roastery updates &amp; offers
-          </button>
+        <div class="shop-empty" id="shop-empty" hidden>
+          <h2 class="shop-empty-title" data-i18n="shop.emptyTitle">No roasts match those filters</h2>
+          <p class="shop-empty-desc" data-i18n="shop.emptyDesc">Try clearing a filter to explore our full Brazilian specialty lineup.</p>
+          <button type="button" class="btn btn--primary" id="shop-reset-btn" data-i18n="shop.resetFiltersBtn">RESET FILTERS</button>
         </div>
       </div>
     </section>
 
-    <!-- VIEW 2: PRODUCT DETAILS / FEATURES -->
+    <!-- VIEW 3: PRODUCT DETAILS / FEATURES -->
     <section id="view-features" class="view view--features" data-view="features" aria-label="Product Features and Commitments" hidden>
       <!-- Band 1: Brewing Social Equity -->
       <article id="brewing-equity" class="story-band story-band--intro">
@@ -94,23 +264,23 @@
         </div>
         <div class="story-inner">
           <div class="story-copy story-copy--intro">
-            <h2 class="story-heading reveal-item">BREWING SOCIAL EQUITY</h2>
-            <p class="story-body reveal-item">
+            <h2 class="story-heading reveal-item" data-i18n="features.band1Heading">BREWING SOCIAL EQUITY</h2>
+            <p class="story-body reveal-item" data-i18n="features.band1Body">
               We bridge the gap between premium quality and ethical responsibility. By bypassing middlemen and using regenerative farming, we ensure every bean is 100% traceable and carbon-neutral. It’s a high-end coffee designed for those who refuse to compromise on taste or the planet’s future.
             </p>
-            <h3 class="story-subheading reveal-item">LEARN MORE ABOUT OUR 3 COMMITMENTS</h3>
+            <h3 class="story-subheading reveal-item" data-i18n="features.band1Subheading">LEARN MORE ABOUT OUR 3 COMMITMENTS</h3>
             <div class="commitments-row reveal-item">
               <button type="button" class="commitment-btn" data-scroll-target="farm-to-cup">
                 <img class="commitment-icon" src="assets/badge-traceable.svg" width="124" height="124" alt="">
-                <span class="commitment-label">FULLY<br>TRACEABLE</span>
+                <span class="commitment-label" data-i18n="features.commitment1">FULLY TRACEABLE</span>
               </button>
               <button type="button" class="commitment-btn" data-scroll-target="zero-waste">
                 <img class="commitment-icon" src="assets/badge-carbon.svg" width="124" height="124" alt="">
-                <span class="commitment-label">CARBON<br>NEUTRAL</span>
+                <span class="commitment-label" data-i18n="features.commitment2">CARBON NEUTRAL</span>
               </button>
               <button type="button" class="commitment-btn" data-scroll-target="people-over-profit">
                 <img class="commitment-icon" src="assets/badge-community.svg" width="124" height="124" alt="">
-                <span class="commitment-label">COMMUNITY<br>DRIVEN</span>
+                <span class="commitment-label" data-i18n="features.commitment3">COMMUNITY DRIVEN</span>
               </button>
             </div>
           </div>
@@ -128,8 +298,8 @@
         </div>
         <div class="story-inner story-inner--right">
           <div class="story-copy story-copy--feature">
-            <h2 class="story-heading">FROM FARM TO CUP</h2>
-            <p class="story-body">
+            <h2 class="story-heading" data-i18n="features.band2Heading">FROM FARM TO CUP</h2>
+            <p class="story-body" data-i18n="features.band2Body">
               We know the source of every bean we roast. Using direct-trade partnerships we can ensure total transparency and fair wages for every farmer.
             </p>
           </div>
@@ -147,8 +317,8 @@
         </div>
         <div class="story-inner story-inner--left">
           <div class="story-copy story-copy--feature">
-            <h2 class="story-heading">ZERO WASTE ROASTING</h2>
-            <p class="story-body">
+            <h2 class="story-heading" data-i18n="features.band3Heading">ZERO WASTE ROASTING</h2>
+            <p class="story-body" data-i18n="features.band3Body">
               From solar-powered roasts to compostable packaging, we ensure your morning caffeine fix leaves no footprint behind.
             </p>
           </div>
@@ -163,8 +333,8 @@
         </div>
         <div class="story-inner story-inner--right">
           <div class="story-copy story-copy--feature">
-            <h2 class="story-heading">PEOPLE OVER PROFIT</h2>
-            <p class="story-body">
+            <h2 class="story-heading" data-i18n="features.band4Heading">PEOPLE OVER PROFIT</h2>
+            <p class="story-body" data-i18n="features.band4Body">
               A portion of every sale funds schools and clean water projects in our growing regions. Your coffee helps us build a better future.
             </p>
           </div>
@@ -174,7 +344,7 @@
       <!-- Sticky / Floating Features CTA Bar + Toast -->
       <div class="features-cta-bar" id="features-cta-bar">
         <div class="cart-toast" id="cart-toast" role="status" aria-live="polite" hidden>
-          <button type="button" class="toast-close-btn" id="toast-close-btn" aria-label="Dismiss notification">
+          <button type="button" class="toast-close-btn" id="toast-close-btn" data-i18n-aria="features.toastDismissAria" aria-label="Dismiss notification">
             <img src="assets/icon-close-dark.svg" width="21" height="21" alt="">
           </button>
           <div class="toast-bag-thumb" aria-hidden="true">
@@ -182,115 +352,101 @@
             <img class="bag-logo" src="assets/logo-green.svg" width="40" height="13" alt="">
           </div>
           <div class="toast-text">
-            <p class="toast-title">ADDED TO CART!</p>
-            <p class="toast-subtitle" id="toast-subtitle">1x Olivia’s Coffee Beans (250g) - $24.00</p>
+            <p class="toast-title" data-i18n="features.toastTitle">ADDED TO CART!</p>
+            <p class="toast-subtitle" id="toast-subtitle">1x Eco-First Espresso Starter Pack (250g) - $24.00</p>
           </div>
           <span class="toast-pointer" aria-hidden="true"></span>
         </div>
 
         <div class="features-cta-buttons">
-          <button type="button" class="btn btn--cream btn--features-add" id="add-to-cart-btn">ADD TO CART</button>
+          <button type="button" class="btn btn--cream btn--features-add" id="add-to-cart-btn" data-i18n="features.addToCartBtn">ADD TO CART</button>
           <a href="#cart" class="btn btn--features-checkout" id="checkout-cta-btn" data-nav="cart">
-            <span class="desktop-only-text">GO TO </span>CHECKOUT
+            <span class="desktop-only-text" data-i18n="features.goToCheckoutDesktop">GO TO </span><span data-i18n="features.checkoutBtn">CHECKOUT</span>
           </a>
         </div>
       </div>
     </section>
 
-    <!-- VIEW 3: CHECKOUT -->
+    <!-- VIEW 4: CHECKOUT -->
     <section id="view-cart" class="view view--cart" data-view="cart" aria-labelledby="cart-heading" hidden>
       <div class="checkout-container">
         <div class="cart-card">
-          <h2 id="cart-heading" class="cart-card-title">ITEMS IN CART</h2>
+          <h2 id="cart-heading" class="cart-card-title" data-i18n="checkout.heading">ITEMS IN CART</h2>
 
-          <div class="cart-item-row">
-            <div class="cart-bag-thumb" aria-hidden="true">
-              <img class="bag-photo" src="assets/coffee-bag.png" alt="">
-              <img class="bag-logo" src="assets/logo-green.svg" width="129" height="43" alt="">
-            </div>
+          <div class="checkout-items-list" id="checkout-items-list"></div>
 
-            <div class="cart-item-info">
-              <p class="cart-item-title">
-                <span id="cart-qty-label">1</span>x Olivia’s Coffee Beans <span class="desktop-only-text">Starter Pack </span>(250g) - $<span id="cart-item-price">24.00</span>
-              </p>
-              <p class="cart-item-desc">
-                Our Starter Pack includes everything you need to start enjoying at your own home some Eco-First Espresso!
-              </p>
-              <div class="cart-qty-controls" aria-label="Quantity controls">
-                <button type="button" class="qty-btn" id="qty-decrease" aria-label="Decrease quantity">−</button>
-                <span class="qty-value" id="qty-value" aria-live="polite">1</span>
-                <button type="button" class="qty-btn" id="qty-increase" aria-label="Increase quantity">+</button>
-              </div>
-              <div class="cart-price-breakdown cart-price-breakdown--mobile">
-                <p>Total Items Price: $<span class="js-subtotal">24.00</span></p>
-                <p>Shipping: $0.00</p>
-              </div>
-            </div>
+          <div class="checkout-empty-notice" id="checkout-empty-notice" hidden>
+            <p data-i18n="checkout.emptyCartNotice">Your cart is currently empty. Add a roast from our shop before completing checkout.</p>
+            <a href="#shop" class="btn btn--primary" data-nav="shop" data-i18n="checkout.emptyCartCta">EXPLORE ROASTS</a>
           </div>
 
           <div class="cart-card-footer">
-            <div class="cart-price-breakdown cart-price-breakdown--desktop">
-              <p>Total Items Price: $<span class="js-subtotal">24.00</span></p>
-              <p>Shipping: $0.00</p>
+            <div class="cart-price-breakdown" id="checkout-breakdown">
+              <p><span data-i18n="checkout.totalItemsPriceLabel">Total Items Price:</span> <span id="checkout-subtotal">$24.00</span></p>
+              <p id="checkout-discount-row" hidden><span data-i18n="checkout.discountLabel">Promo Discount:</span> <span id="checkout-discount">-$0.00</span></p>
+              <p><span data-i18n="checkout.shippingLabel">Shipping:</span> <span id="checkout-shipping">$0.00</span></p>
             </div>
-            <p class="cart-final-price">FINAL PRICE: $<span id="cart-final-price">24.00</span></p>
+            <p class="cart-final-price">
+              <span data-i18n="checkout.finalPriceLabel">FINAL PRICE:</span> <span id="cart-final-price">$24.00</span>
+            </p>
+            <p class="checkout-demo-note" data-i18n="checkout.demoPaymentNote">Simulated checkout for demonstration — no real payment is charged.</p>
           </div>
         </div>
 
         <form id="checkout-form" class="checkout-form" novalidate>
           <div class="form-field" data-field="email">
-            <label for="field-email" class="field-label">Email</label>
-            <input type="email" id="field-email" name="email" class="field-input" placeholder="name.surname@email.com" autocomplete="email" required>
+            <label for="field-email" class="field-label" data-i18n="checkout.emailLabel">Email</label>
+            <input type="email" id="field-email" name="email" class="field-input" data-i18n-placeholder="checkout.emailPlaceholder" placeholder="name.surname@email.com" autocomplete="email" required>
             <span class="field-error" id="error-email" aria-live="polite"></span>
           </div>
 
           <div class="form-field" data-field="address">
-            <label for="field-address" class="field-label">Address</label>
-            <input type="text" id="field-address" name="address" class="field-input" placeholder="Address Line" autocomplete="street-address" required>
+            <label for="field-address" class="field-label" data-i18n="checkout.addressLabel">Shipping Address</label>
+            <input type="text" id="field-address" name="address" class="field-input" data-i18n-placeholder="checkout.addressPlaceholder" placeholder="Street, number, city, and postal code" autocomplete="street-address" required>
             <span class="field-error" id="error-address" aria-live="polite"></span>
           </div>
 
           <div class="form-field" data-field="cardName">
-            <label for="field-card-name" class="field-label">Name on Credit Card</label>
-            <input type="text" id="field-card-name" name="cardName" class="field-input" placeholder="Name Surname" autocomplete="cc-name" required>
+            <label for="field-card-name" class="field-label" data-i18n="checkout.cardNameLabel">Name on Credit Card</label>
+            <input type="text" id="field-card-name" name="cardName" class="field-input" data-i18n-placeholder="checkout.cardNamePlaceholder" placeholder="Name Surname" autocomplete="cc-name" required>
             <span class="field-error" id="error-cardName" aria-live="polite"></span>
           </div>
 
           <div class="form-field" data-field="cardNumber">
-            <label for="field-card-number" class="field-label">Card Number</label>
-            <input type="text" id="field-card-number" name="cardNumber" class="field-input" inputmode="numeric" maxlength="19" placeholder="0000 0000 0000 0000" autocomplete="cc-number" required>
+            <label for="field-card-number" class="field-label" data-i18n="checkout.cardNumberLabel">Card Number</label>
+            <input type="text" id="field-card-number" name="cardNumber" class="field-input" inputmode="numeric" maxlength="19" data-i18n-placeholder="checkout.cardNumberPlaceholder" placeholder="0000 0000 0000 0000" autocomplete="cc-number" required>
             <span class="field-error" id="error-cardNumber" aria-live="polite"></span>
           </div>
 
           <div class="form-row-split">
             <div class="form-field" data-field="expiry">
-              <label for="field-expiry" class="field-label">Card Valid Date</label>
-              <input type="text" id="field-expiry" name="expiry" class="field-input" inputmode="numeric" maxlength="5" placeholder="MM/YY" autocomplete="cc-exp" required>
+              <label for="field-expiry" class="field-label" data-i18n="checkout.expiryLabel">Card Valid Date</label>
+              <input type="text" id="field-expiry" name="expiry" class="field-input" inputmode="numeric" maxlength="5" data-i18n-placeholder="checkout.expiryPlaceholder" placeholder="MM/YY" autocomplete="cc-exp" required>
               <span class="field-error" id="error-expiry" aria-live="polite"></span>
             </div>
 
             <div class="form-field form-field--cvc" data-field="cvc">
               <div class="label-with-tip">
-                <label for="field-cvc" class="field-label">CVC</label>
+                <label for="field-cvc" class="field-label" data-i18n="checkout.cvcLabel">CVC</label>
                 <div class="cvc-tip-anchor">
-                  <button type="button" class="cvc-info-btn" id="cvc-info-btn" aria-label="What is CVC?" aria-expanded="false" aria-describedby="cvc-tooltip">i</button>
+                  <button type="button" class="cvc-info-btn" id="cvc-info-btn" data-i18n-aria="checkout.cvcAria" aria-label="What is CVC?" aria-expanded="false" aria-describedby="cvc-tooltip">i</button>
                   <div class="cvc-tooltip" id="cvc-tooltip" role="tooltip" hidden>
-                    <span>3 digits from the back of your card</span>
+                    <span data-i18n="checkout.cvcTooltip">3 or 4 security digits on the back of your card</span>
                     <span class="cvc-tooltip-pointer" aria-hidden="true"></span>
                   </div>
                 </div>
               </div>
-              <input type="text" id="field-cvc" name="cvc" class="field-input" inputmode="numeric" maxlength="4" placeholder="000" autocomplete="cc-csc" required>
+              <input type="text" id="field-cvc" name="cvc" class="field-input" inputmode="numeric" maxlength="4" data-i18n-placeholder="checkout.cvcPlaceholder" placeholder="000" autocomplete="cc-csc" required>
               <span class="field-error" id="error-cvc" aria-live="polite"></span>
             </div>
           </div>
 
-          <button type="submit" class="btn btn--primary btn--purchase" id="purchase-btn">PURCHASE</button>
+          <button type="submit" class="btn btn--primary btn--purchase" id="purchase-btn" data-i18n="checkout.purchaseBtn">PURCHASE</button>
         </form>
       </div>
     </section>
 
-    <!-- VIEW 4: ORDER CONFIRMATION -->
+    <!-- VIEW 5: ORDER CONFIRMATION -->
     <section id="view-confirmation" class="view view--confirmation" data-view="confirmation" aria-labelledby="confirm-heading" hidden>
       <div class="confirmation-bg" aria-hidden="true">
         <img class="confirmation-bg-img" src="assets/confirmation-bg.png" alt="">
@@ -299,18 +455,223 @@
 
       <div class="confirmation-stage">
         <div class="confirmation-card">
-          <h2 id="confirm-heading" class="confirmation-title">CONGRATULATIONS!</h2>
-          <p class="confirmation-subtitle">Your order is already on the way!</p>
-          <p class="confirmation-invite">WHY NOT TELL YOUR FRIENDS ABOUT IT AND INVITE THEM OVER FOR A CUP?</p>
-          <button type="button" class="social-share-btn" id="social-share-btn" aria-label="Share your order with friends">
+          <h2 id="confirm-heading" class="confirmation-title" data-i18n="confirmation.title">CONGRATULATIONS!</h2>
+          <p class="confirmation-subtitle" data-i18n="confirmation.subtitle">Your order is already on the way!</p>
+
+          <div class="confirm-receipt" id="confirm-receipt">
+            <div class="confirm-receipt-head">
+              <span class="confirm-receipt-label" data-i18n="confirmation.orderNumberLabel">Order Number</span>
+              <strong class="confirm-order-id" id="confirm-order-id">#OCB-1000</strong>
+            </div>
+            <div class="confirm-order-summary" id="confirm-order-summary"></div>
+            <p class="confirm-impact-note" id="confirm-impact-note"></p>
+          </div>
+
+          <p class="confirmation-invite" data-i18n="confirmation.invite">WHY NOT TELL YOUR FRIENDS ABOUT IT AND INVITE THEM OVER FOR A CUP?</p>
+          <button type="button" class="social-share-btn" id="social-share-btn" data-i18n-aria="confirmation.shareAria" aria-label="Share your order with friends">
             <img src="assets/social-icons.svg" width="185" height="51" alt="Instagram, X, and Reddit">
           </button>
           <p class="share-feedback" id="share-feedback" aria-live="polite"></p>
-          <button type="button" class="btn btn--primary btn--return-home" data-action="return-home">RETURN HOME</button>
+          <button type="button" class="btn btn--primary btn--return-home" data-action="return-home" data-i18n="confirmation.returnHomeBtn">RETURN HOME</button>
         </div>
       </div>
     </section>
+
+    <!-- SHARED SITE FOOTER (Home & Shop) -->
+    <footer class="site-footer" id="site-footer">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <a href="#home" class="footer-logo" data-nav="home" data-i18n-aria="nav.homeAria" aria-label="Olívia Coffee Beans Home">
+            <img src="assets/logo-cream.svg" width="200" height="65" alt="Olívia Coffee Beans">
+          </a>
+          <p class="footer-tagline" data-i18n="footer.tagline">
+            Eco-first Brazilian specialty coffee. Solar-roasted, direct-trade, and 100% compostable.
+          </p>
+          <div class="footer-badges">
+            <span class="footer-badge">
+              <img src="assets/badge-traceable.svg" width="28" height="28" alt="">
+              <span data-i18n="features.commitment1">FULLY TRACEABLE</span>
+            </span>
+            <span class="footer-badge">
+              <img src="assets/badge-carbon.svg" width="28" height="28" alt="">
+              <span data-i18n="features.commitment2">CARBON NEUTRAL</span>
+            </span>
+            <span class="footer-badge">
+              <img src="assets/badge-community.svg" width="28" height="28" alt="">
+              <span data-i18n="features.commitment3">COMMUNITY DRIVEN</span>
+            </span>
+          </div>
+          <p class="footer-origin-note">Brasília, DF &amp; Cerrado Mineiro, MG — Brazil</p>
+        </div>
+
+        <div class="footer-col">
+          <h3 class="footer-heading" data-i18n="footer.exploreHeading">Explore</h3>
+          <ul class="footer-links">
+            <li><a href="#home" data-nav="home" data-i18n="nav.home">HOME</a></li>
+            <li><a href="#shop" data-nav="shop" data-i18n="nav.shop">ROASTS</a></li>
+            <li><a href="#features" data-nav="features" data-i18n="nav.features">OUR STORY</a></li>
+            <li><a href="#cart" data-nav="cart" data-i18n="nav.cart">CART</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h3 class="footer-heading" data-i18n="footer.commitmentsHeading">Commitments</h3>
+          <ul class="footer-links">
+            <li><a href="#features" data-nav="features" data-i18n="features.band2Heading">FROM FARM TO CUP</a></li>
+            <li><a href="#features" data-nav="features" data-i18n="features.band3Heading">ZERO WASTE ROASTING</a></li>
+            <li><a href="#features" data-nav="features" data-i18n="features.band4Heading">PEOPLE OVER PROFIT</a></li>
+          </ul>
+          <p class="footer-promo-hint" data-i18n="footer.promoHint">Welcome codes: OLIVIA15 / BEMVINDO15 (15% off) or FREESHIP</p>
+        </div>
+
+        <div class="footer-col footer-newsletter">
+          <h3 class="footer-heading" data-i18n="footer.newsletterHeading">Roastery Notes</h3>
+          <p class="footer-newsletter-desc" data-i18n="footer.newsletterDesc">
+            Get early access to micro-lots and 15% off your first bag with code OLIVIA15.
+          </p>
+          <button type="button" class="btn btn--accent btn--footer-newsletter" data-action="open-newsletter" data-i18n="footer.newsletterBtn">JOIN NEWSLETTER</button>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p class="footer-copy" data-i18n="footer.copyright">© 2026 Olívia Coffee Beans. All rights reserved.</p>
+        <p class="footer-attribution">Olívia Coffee Beans v0.1.1 · <span data-i18n="footer.demoNote">Interactive storefront experience — no real charges are processed.</span></p>
+      </div>
+    </footer>
   </main>
+
+  <!-- PRODUCT CONFIGURATOR MODAL -->
+  <div class="product-modal" id="product-modal" role="dialog" aria-modal="true" aria-labelledby="pm-title" aria-hidden="true" hidden>
+    <div class="product-modal-backdrop" data-action="close-product-modal"></div>
+    <div class="product-modal-dialog">
+      <button type="button" class="pm-close-btn" id="pm-close-btn" data-action="close-product-modal" data-i18n-aria="modal.closeAria" aria-label="Close product configurator">
+        <img src="assets/icon-close-dark.svg" width="24" height="24" alt="">
+      </button>
+
+      <div class="pm-layout">
+        <div class="pm-media">
+          <div class="pm-image-frame" id="pm-image-frame">
+            <img class="pm-image" id="pm-image" src="assets/coffee-bag.png" alt="">
+            <img class="pm-kraft-logo" id="pm-kraft-logo" src="assets/logo-green.svg" width="129" height="43" alt="" hidden>
+          </div>
+          <div class="pm-lot-card" id="pm-lot-card"></div>
+        </div>
+
+        <div class="pm-details">
+          <div class="pm-meta-row">
+            <span class="pm-origin" id="pm-origin"></span>
+            <span class="pm-roast" id="pm-roast"></span>
+          </div>
+          <h2 class="pm-title" id="pm-title">Eco-First Espresso Starter Pack</h2>
+          <p class="pm-description" id="pm-description"></p>
+          <div class="pm-tasting-tags" id="pm-tasting-tags"></div>
+
+          <div class="pm-option-group" id="pm-size-group">
+            <span class="pm-option-label" data-i18n="modal.sizeLabel">Bag Size</span>
+            <div class="pm-pills" id="pm-sizes"></div>
+            <p class="pm-fixed-size-note" id="pm-fixed-size-note" data-i18n="modal.fixedSizeNote" hidden>
+              Curated 3 x 150g tasting box (450g total) — size cannot be changed.
+            </p>
+          </div>
+
+          <div class="pm-option-group">
+            <span class="pm-option-label" data-i18n="modal.grindLabel">Grind Option</span>
+            <div class="pm-pills" id="pm-grinds"></div>
+          </div>
+
+          <div class="pm-option-group">
+            <span class="pm-option-label" data-i18n="modal.cadenceLabel">Delivery Frequency</span>
+            <div class="pm-cadences" id="pm-cadences"></div>
+            <p class="pm-sub-perks" data-i18n="modal.subscriptionPerks">
+              Subscribers save 15% on every order and always get free carbon-neutral shipping.
+            </p>
+          </div>
+
+          <div class="pm-footer-bar">
+            <div class="pm-qty-wrap">
+              <span class="pm-qty-label" data-i18n="modal.quantityLabel">Quantity</span>
+              <div class="pm-qty-stepper">
+                <button type="button" class="qty-btn" id="pm-qty-dec" data-i18n-aria="modal.decreaseQtyAria" aria-label="Decrease quantity">−</button>
+                <span class="qty-value" id="pm-qty-val" aria-live="polite">1</span>
+                <button type="button" class="qty-btn" id="pm-qty-inc" data-i18n-aria="modal.increaseQtyAria" aria-label="Increase quantity">+</button>
+              </div>
+            </div>
+
+            <div class="pm-price-wrap">
+              <span class="pm-price-label" data-i18n="modal.lineTotalLabel">Item Total</span>
+              <strong class="pm-price" id="pm-price">$24.00</strong>
+            </div>
+
+            <button type="button" class="btn btn--primary pm-add-btn" id="pm-add-btn" data-i18n="modal.addToCartBtn">ADD TO CART</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE-OUT CART DRAWER -->
+  <div class="cart-drawer-backdrop" id="cart-drawer-backdrop" data-action="close-cart-drawer" hidden></div>
+  <aside class="cart-drawer" id="cart-drawer" role="dialog" aria-modal="true" aria-labelledby="cart-drawer-title" aria-hidden="true" hidden>
+    <div class="cd-header">
+      <h2 class="cd-title" id="cart-drawer-title" data-i18n="cartDrawer.title">YOUR CART</h2>
+      <button type="button" class="cd-close-btn" id="cd-close-btn" data-action="close-cart-drawer" data-i18n-aria="cartDrawer.closeAria" aria-label="Close cart drawer">
+        <img src="assets/icon-close-dark.svg" width="24" height="24" alt="">
+      </button>
+    </div>
+
+    <div class="cd-shipping-bar" id="cd-shipping-bar">
+      <p class="cd-shipping-text" id="cd-shipping-text"></p>
+      <div class="cd-shipping-track">
+        <div class="cd-shipping-fill" id="cd-shipping-fill"></div>
+      </div>
+    </div>
+
+    <div class="cd-body">
+      <div class="cd-items" id="cd-items"></div>
+
+      <div class="cd-empty" id="cd-empty" hidden>
+        <p class="cd-empty-title" data-i18n="cartDrawer.emptyTitle">Your bag is empty</p>
+        <p class="cd-empty-desc" data-i18n="cartDrawer.emptyDesc">Explore our solar-roasted Brazilian beans and build your first eco-first order.</p>
+        <button type="button" class="btn btn--primary cd-browse-btn" id="cd-browse-btn" data-i18n="cartDrawer.browseRoastsBtn">BROWSE ROASTS</button>
+      </div>
+    </div>
+
+    <div class="cd-footer" id="cd-footer">
+      <form class="cd-promo-form" id="cd-promo-form" novalidate>
+        <label for="cd-promo-input" class="cd-promo-label" data-i18n="cartDrawer.promoLabel">Promo Code</label>
+        <div class="cd-promo-row">
+          <input type="text" id="cd-promo-input" class="cd-promo-input" data-i18n-placeholder="cartDrawer.promoPlaceholder" placeholder="OLIVIA15, BEMVINDO15, or FREESHIP" autocomplete="off">
+          <button type="submit" class="btn btn--cream cd-promo-apply" id="cd-promo-apply-btn" data-i18n="cartDrawer.promoApplyBtn">APPLY</button>
+        </div>
+        <p class="cd-promo-feedback" id="cd-promo-feedback" aria-live="polite"></p>
+        <div class="cd-promo-chip" id="cd-promo-chip" hidden>
+          <span id="cd-promo-chip-text"></span>
+          <button type="button" class="cd-promo-remove" id="cd-promo-remove-btn" data-i18n="cartDrawer.promoRemoveBtn">Remove</button>
+        </div>
+      </form>
+
+      <div class="cd-totals">
+        <div class="cd-total-row">
+          <span data-i18n="cartDrawer.subtotalLabel">Subtotal</span>
+          <span id="cd-subtotal">$0.00</span>
+        </div>
+        <div class="cd-total-row cd-discount-row" id="cd-discount-row" hidden>
+          <span data-i18n="cartDrawer.discountLabel">Promo Discount</span>
+          <span id="cd-discount">-$0.00</span>
+        </div>
+        <div class="cd-total-row">
+          <span data-i18n="cartDrawer.shippingLabel">Shipping</span>
+          <span id="cd-shipping-val">$0.00</span>
+        </div>
+        <div class="cd-total-row cd-total-row--final">
+          <strong data-i18n="cartDrawer.totalLabel">Estimated Total</strong>
+          <strong id="cd-total">$0.00</strong>
+        </div>
+      </div>
+
+      <a href="#cart" class="btn btn--primary cd-checkout-btn" id="cd-checkout-btn" data-nav="cart" data-i18n="cartDrawer.checkoutBtn">PROCEED TO CHECKOUT</a>
+    </div>
+  </aside>
 
   <!-- PURCHASE BOX-PACKING ANIMATION OVERLAY -->
   <div class="purchase-animation" id="purchase-animation" aria-hidden="true" hidden>
@@ -328,25 +689,25 @@
       <div class="newsletter-bg-wrap" aria-hidden="true">
         <img class="newsletter-beans-bg" src="assets/newsletter-beans-bg.png" alt="">
       </div>
-      <button type="button" class="newsletter-close-btn" id="newsletter-close-btn" data-action="close-newsletter" aria-label="Close newsletter popup">
+      <button type="button" class="newsletter-close-btn" id="newsletter-close-btn" data-action="close-newsletter" data-i18n-aria="newsletter.closeAria" aria-label="Close newsletter popup">
         <img src="assets/icon-close-light.svg" width="31" height="32" alt="">
       </button>
       <div class="newsletter-card">
         <div class="newsletter-glass-wrap" aria-hidden="true">
           <img class="newsletter-glass" src="assets/newsletter-glass.png" alt="">
         </div>
-        <h2 id="newsletter-title" class="newsletter-title">JOIN OUR NEWSLETTER!</h2>
-        <p class="newsletter-subtitle">And don’t miss out on the latest news, promotions and deals on our products!</p>
+        <h2 id="newsletter-title" class="newsletter-title" data-i18n="newsletter.title">JOIN OUR NEWSLETTER!</h2>
+        <p class="newsletter-subtitle" data-i18n="newsletter.subtitle">And don’t miss out on the latest news, promotions and deals on our products!</p>
 
         <form id="newsletter-form" class="newsletter-form" novalidate>
           <div class="form-field newsletter-field">
-            <label for="newsletter-email" class="field-label">Email Address</label>
-            <input type="email" id="newsletter-email" class="field-input field-input--white" placeholder="youremail@mail.com" required>
+            <label for="newsletter-email" class="field-label" data-i18n="newsletter.emailLabel">Email Address</label>
+            <input type="email" id="newsletter-email" class="field-input field-input--white" data-i18n-placeholder="newsletter.emailPlaceholder" placeholder="youremail@mail.com" required>
             <span class="field-error" id="newsletter-error" aria-live="polite"></span>
           </div>
-          <button type="submit" class="btn btn--primary btn--subscribe">SUBSCRIBE</button>
-          <p class="newsletter-success" id="newsletter-success" aria-live="polite" hidden>
-            You’re subscribed! Watch your inbox for our next small-batch roast.
+          <button type="submit" class="btn btn--primary btn--subscribe" data-i18n="newsletter.subscribeBtn">SUBSCRIBE</button>
+          <p class="newsletter-success" id="newsletter-success" data-i18n="newsletter.successMessage" aria-live="polite" hidden>
+            You’re subscribed! Watch your inbox for our next small-batch roast (and use OLIVIA15 for 15% off).
           </p>
         </form>
       </div>
