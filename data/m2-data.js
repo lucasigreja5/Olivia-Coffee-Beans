@@ -395,8 +395,8 @@
         'pt-BR': 'Product Designer & Engenheiro Front-End'
       },
       timeline: {
-        en: '3 Iterative Releases (v0.1 -> v0.1.2)',
-        'pt-BR': '3 Entregas Iterativas (v0.1 -> v0.1.2)'
+        en: '4 Iterative Releases (v0.1 -> v0.1.3)',
+        'pt-BR': '4 Entregas Iterativas (v0.1 -> v0.1.3)'
       },
       deliverables: {
         en: [
@@ -421,7 +421,7 @@
         'Vanilla JS Globals',
         'localStorage State'
       ],
-      version: 'v0.1.2'
+      version: 'v0.1.3'
     },
     brief: {
       eyebrow: {
@@ -606,6 +606,35 @@
           en: 'Launch Coffee Quiz',
           'pt-BR': 'Abrir Quiz do Café'
         }
+      },
+      {
+        id: 'v0.1.3',
+        version: 'v0.1.3',
+        title: {
+          en: 'Figma Component Library Alignment',
+          'pt-BR': 'Alinhamento à Biblioteca de Componentes do Figma'
+        },
+        summary: {
+          en: 'Aligned storefront UI 1:1 with Figma Components (103:57) and Style Guides (68:5), introducing Switch, Checkbox, Star, Text Field states, ReviewCard, Product Card surfaces, and all 5 Logo variants.',
+          'pt-BR': 'Alinhou a interface 1:1 com os Componentes (103:57) e Style Guides (68:5) do Figma, integrando Switch, Checkbox, Star, estados de Text Field, ReviewCard, superfícies de Product Card e as 5 variantes do Logo.'
+        },
+        highlights: {
+          en: [
+            '1:1 Switch, Checkbox, Star & Text Field states',
+            'ReviewCard & Product Card Figma surface parity',
+            'All 15 Style Guide color tokens & 5 Logo variants'
+          ],
+          'pt-BR': [
+            'Switch, Checkbox, Star e Text Field fiéis ao Figma',
+            'Paridade de superfície em ReviewCard e Product Card',
+            '15 tokens de cor dos Style Guides e 5 variantes de Logo'
+          ]
+        },
+        jumpTarget: '#shop',
+        ctaLabel: {
+          en: 'Inspect Aligned Catalog',
+          'pt-BR': 'Ver Catálogo Alinhado'
+        }
       }
     ],
     designTokens: [
@@ -658,6 +687,18 @@
         }
       },
       {
+        token: '--ocb-secondary-2',
+        hex: '#C0AE90',
+        name: {
+          en: 'Warm Kraft Medium',
+          'pt-BR': 'Kraft Médio Quente'
+        },
+        role: {
+          en: 'Secondary kraft surface accents, borders, and warm packaging tones',
+          'pt-BR': 'Acentos de superfície kraft média, bordas e tons quentes de embalagem'
+        }
+      },
+      {
         token: '--ocb-secondary-3',
         hex: '#FFF2E6',
         name: {
@@ -679,6 +720,90 @@
         role: {
           en: 'Primary hero headline accent, Buy Now CTA, and mobile drawer',
           'pt-BR': 'Destaque do título no hero, CTA Comprar e menu mobile'
+        }
+      },
+      {
+        token: '--ocb-accent-2',
+        hex: '#745100',
+        name: {
+          en: 'Roasted Amber Dark',
+          'pt-BR': 'Âmbar Torrado Escuro'
+        },
+        role: {
+          en: 'Deep amber contrast accents and rich roasted warm badges',
+          'pt-BR': 'Acentos âmbar profundos de contraste e selos de torra rica'
+        }
+      },
+      {
+        token: '--ocb-accent-3',
+        hex: '#FACD66',
+        name: {
+          en: 'Soft Honey Gold',
+          'pt-BR': 'Dourado Mel Suave'
+        },
+        role: {
+          en: 'Gentle golden highlights, star fill warmth, and soft hover tints',
+          'pt-BR': 'Destaques dourados suaves, preenchimento de estrelas e realces sutis'
+        }
+      },
+      {
+        token: '--ocb-gray-100',
+        hex: '#F0F0F0',
+        name: {
+          en: 'Canvas Frost White',
+          'pt-BR': 'Branco Gelo de Fundo'
+        },
+        role: {
+          en: 'Clean neutral canvas surfaces and subtle card contrast wells',
+          'pt-BR': 'Superfícies neutras claras e áreas sutis de contraste'
+        }
+      },
+      {
+        token: '--ocb-gray-200',
+        hex: '#D2D2D2',
+        name: {
+          en: 'Mist Divider Gray',
+          'pt-BR': 'Cinza Divisória Névoa'
+        },
+        role: {
+          en: 'Hairline dividers, disabled input fills, and subtle control borders',
+          'pt-BR': 'Linhas divisórias, campos desabilitados e bordas sutis de controle'
+        }
+      },
+      {
+        token: '--ocb-gray-400',
+        hex: '#BEBEBE',
+        name: {
+          en: 'Muted Stone Gray',
+          'pt-BR': 'Cinza Pedra Suave'
+        },
+        role: {
+          en: 'Muted secondary borders, inactive star strokes, and helper icons',
+          'pt-BR': 'Bordas secundárias suaves, estrelas inativas e ícones de apoio'
+        }
+      },
+      {
+        token: '--ocb-gray-600',
+        hex: '#969696',
+        name: {
+          en: 'Placeholder Slate Gray',
+          'pt-BR': 'Cinza Ardósia de Placeholder'
+        },
+        role: {
+          en: 'Input placeholder text, secondary metadata, and disabled labels',
+          'pt-BR': 'Texto placeholder de campos, metadados secundários e rótulos inativos'
+        }
+      },
+      {
+        token: '--ocb-gray-800',
+        hex: '#646464',
+        name: {
+          en: 'Dark Mode Surface Gray',
+          'pt-BR': 'Cinza Superfície Modo Escuro'
+        },
+        role: {
+          en: 'Elevated dark-surface cards (LightMode ReviewCard) and muted ink',
+          'pt-BR': 'Cards em superfície escura (ReviewCard LightMode) e texto secundário'
         }
       },
       {

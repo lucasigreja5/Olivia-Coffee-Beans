@@ -72,6 +72,8 @@
   var pmSizes = document.getElementById('pm-sizes');
   var pmFixedSizeNote = document.getElementById('pm-fixed-size-note');
   var pmGrinds = document.getElementById('pm-grinds');
+  var pmSubSwitch = document.getElementById('pm-sub-switch');
+  var pmSubSwitchImg = document.getElementById('pm-sub-switch-img');
   var pmCadences = document.getElementById('pm-cadences');
   var pmQtyDec = document.getElementById('pm-qty-dec');
   var pmQtyVal = document.getElementById('pm-qty-val');
@@ -124,6 +126,7 @@
   var cardNumberInput = document.getElementById('field-card-number');
   var expiryInput = document.getElementById('field-expiry');
   var cvcInput = document.getElementById('field-cvc');
+  var compostCardInput = document.getElementById('field-compost-card');
   var cvcInfoBtn = document.getElementById('cvc-info-btn');
   var cvcTooltip = document.getElementById('cvc-tooltip');
 
@@ -157,6 +160,30 @@
       .replace(/>/g, '&gt;')
       .replace(/"/g, '&quot;')
       .replace(/'/g, '&#39;');
+  }
+
+  function getAuthorInitials(name) {
+    var words = String(name || '')
+      .replace(/[^A-Za-zÀ-ÖØ-öø-ÿ\s]/g, ' ')
+      .trim()
+      .split(/\s+/)
+      .filter(Boolean);
+    if (words.length === 0) return 'OC';
+    if (words.length === 1) return words[0].slice(0, 2).toUpperCase();
+    var secondIdx = words.length > 2 && words[words.length - 1].length === 1 ? 1 : words.length - 1;
+    return (words[0].charAt(0) + words[secondIdx].charAt(0)).toUpperCase();
+  }
+
+  function buildStarsHtml(rating) {
+    var val = Math.max(0, Math.min(5, Number(rating || 5)));
+    var html = '';
+    for (var s = 1; s <= 5; s += 1) {
+      var src = val >= s
+        ? 'assets/star-full.svg'
+        : (val >= s - 0.5 ? 'assets/star-half.svg' : 'assets/star-empty.svg');
+      html += '<img class="ocb-star" src="' + src + '" width="26" height="23" alt="">';
+    }
+    return html;
   }
 
   function getDict() {
@@ -645,6 +672,8 @@
           (badge ? '<span class="product-card-badge">' + escapeHtml(badge) + '</span>' : '') +
         '</div>' +
         '<div class="product-card-body">' +
+          '<h3 class="product-card-title">' + escapeHtml(name) + '</h3>' +
+          '<p class="product-card-desc">' + escapeHtml(shortDesc) + '</p>' +
           '<div class="product-card-meta">' +
             '<span class="product-card-origin">' + escapeHtml(origin) + '</span>' +
             '<span class="product-card-roast" title="' + escapeHtml(roastLabel) + '">' +
@@ -652,8 +681,6 @@
               '<span class="roast-text">' + escapeHtml(roastLabel) + '</span>' +
             '</span>' +
           '</div>' +
-          '<h3 class="product-card-title">' + escapeHtml(name) + '</h3>' +
-          '<p class="product-card-desc">' + escapeHtml(shortDesc) + '</p>' +
           '<div class="product-card-tags">' + tagsHtml + '</div>' +
           '<div class="product-card-footer">' +
             '<div class="product-card-price-block">' +
@@ -661,7 +688,7 @@
               '<strong class="product-card-price">' + escapeHtml(priceStr) + '</strong>' +
             '</div>' +
             '<div class="product-card-actions">' +
-              '<button type="button" class="btn btn--primary product-card-btn" data-open-product="' + escapeHtml(p.id) + '">' +
+              '<button type="button" class="btn btn--primary btn--xs product-card-btn" data-open-product="' + escapeHtml(p.id) + '">' +
                 escapeHtml(btnLabel) +
               '</button>' +
             '</div>' +
@@ -747,17 +774,27 @@
     var verifiedBadge = t('reviews.verifiedBadge', 'Verified Buyer');
 
     reviewsGrid.innerHTML = reviews.map(function (r) {
+      var ratingVal = Number(r.rating || 5);
+      var initials = getAuthorInitials(r.author);
+      var authorUpper = String(r.author || '').toUpperCase();
+      var starsHtml = buildStarsHtml(ratingVal);
+
       return (
-        '<article class="review-card">' +
-          '<div class="review-card-top">' +
-            '<div class="review-stars" aria-label="' + escapeHtml(ratingAria) + '">★★★★★</div>' +
-            (r.verified ? '<span class="review-verified">' + escapeHtml(verifiedBadge) + '</span>' : '') +
+        '<article class="review-card review-card--light">' +
+          '<div class="review-card-header">' +
+            '<div class="review-avatar" aria-hidden="true"><span>' + escapeHtml(initials) + '</span></div>' +
+            '<div class="review-header-info">' +
+              '<h3 class="review-author-name">' + escapeHtml(authorUpper) + '</h3>' +
+              '<div class="review-rating-row" aria-label="' + escapeHtml(ratingAria) + '">' +
+                starsHtml +
+                '<span class="review-rating-num">' + escapeHtml(ratingVal.toFixed(1)) + '</span>' +
+              '</div>' +
+            '</div>' +
           '</div>' +
-          '<h3 class="review-title">' + escapeHtml(pickLoc(r.title)) + '</h3>' +
-          '<blockquote class="review-quote">“' + escapeHtml(pickLoc(r.quote)) + '”</blockquote>' +
-          '<footer class="review-author-row">' +
-            '<strong class="review-author">' + escapeHtml(r.author) + '</strong>' +
+          '<p class="review-quote">“' + escapeHtml(pickLoc(r.quote)) + '”</p>' +
+          '<footer class="review-footer">' +
             '<span class="review-meta">' + escapeHtml(r.location) + ' · ' + escapeHtml(pickLoc(r.productName)) + '</span>' +
+            (r.verified ? '<span class="review-verified">' + escapeHtml(verifiedBadge) + '</span>' : '') +
           '</footer>' +
         '</article>'
       );
@@ -926,14 +963,25 @@
       );
     }).join('');
 
-    // Cadences
+    // Subscription Switch & Cadences
+    var isSub = Boolean(getCadence(state.modal.cadenceId).isSubscription);
+    if (pmSubSwitch) {
+      pmSubSwitch.setAttribute('aria-checked', String(isSub));
+      pmSubSwitch.classList.toggle('is-on', isSub);
+    }
+    if (pmSubSwitchImg) {
+      pmSubSwitchImg.src = isSub ? 'assets/switch-on.svg' : 'assets/switch-off.svg';
+    }
+
     pmCadences.innerHTML = (CATALOG.cadences || []).map(function (c) {
       var active = c.id === state.modal.cadenceId;
       var unitPricing = getItemPricing(p, state.modal.sizeId, c.id, 1);
       var unitPriceStr = formatPrice(unitPricing.unitUsd, unitPricing.unitBrl, state.lang);
       return (
         '<button type="button" class="pm-cadence-card' + (active ? ' is-active' : '') + (c.isSubscription ? ' is-subscription' : '') + '" data-pm-cadence="' + escapeHtml(c.id) + '" aria-pressed="' + String(active) + '">' +
-          '<span class="pm-cadence-radio" aria-hidden="true"></span>' +
+          '<span class="ocb-checkbox ocb-checkbox--primary ocb-checkbox--sm' + (active ? ' is-checked' : '') + '" aria-hidden="true">' +
+            (active ? '<img src="assets/checkbox-primary-on.svg" width="24" height="24" alt="">' : '') +
+          '</span>' +
           '<span class="pm-cadence-main">' +
             '<strong class="pm-cadence-name">' + escapeHtml(pickLoc(c.label)) + '</strong>' +
             (c.badge ? '<span class="pm-cadence-badge">' + escapeHtml(pickLoc(c.badge)) + '</span>' : '') +
@@ -946,6 +994,14 @@
     pmQtyVal.textContent = String(state.modal.qty);
     var totalPricing = getItemPricing(p, state.modal.sizeId, state.modal.cadenceId, state.modal.qty);
     pmPrice.textContent = formatPrice(totalPricing.lineUsd, totalPricing.lineBrl, state.lang);
+  }
+
+  if (pmSubSwitch) {
+    pmSubSwitch.addEventListener('click', function () {
+      var isSub = Boolean(getCadence(state.modal.cadenceId).isSubscription);
+      state.modal.cadenceId = isSub ? 'one-time' : 'monthly';
+      renderProductModal();
+    });
   }
 
   pmSizes.addEventListener('click', function (e) {
@@ -1579,6 +1635,7 @@
     return {
       orderId: '#OCB-' + randomDigits,
       createdAt: new Date().toISOString(),
+      compostCard: Boolean(compostCardInput && compostCardInput.checked),
       items: itemsSnapshot,
       totals: {
         subtotalUsd: totals.subtotalUsd,

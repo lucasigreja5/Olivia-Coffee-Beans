@@ -189,7 +189,9 @@
               '<strong class="quiz-option-label">' + escapeHtml(pickLoc(opt.label)) + '</strong>' +
               '<span class="quiz-option-hint">' + escapeHtml(pickLoc(opt.hint)) + '</span>' +
             '</span>' +
-            '<span class="quiz-option-check" aria-hidden="true"></span>' +
+            '<span class="ocb-checkbox ocb-checkbox--primary ocb-checkbox--sm' + (active ? ' is-checked' : '') + '" aria-hidden="true">' +
+              (active ? '<img src="assets/checkbox-primary-on.svg" width="24" height="24" alt="">' : '') +
+            '</span>' +
           '</button>'
         );
       }).join('');
@@ -210,10 +212,10 @@
           '<div class="quiz-options-grid">' + optionsHtml + '</div>' +
         '</div>' +
         '<div class="quiz-nav-row">' +
-          '<button type="button" class="btn quiz-back-btn" id="quiz-back-btn"' + (quizState.stepIndex === 0 ? ' disabled' : '') + '>' +
+          '<button type="button" class="btn btn--secondary btn--xs quiz-back-btn" id="quiz-back-btn"' + (quizState.stepIndex === 0 ? ' disabled' : '') + '>' +
             escapeHtml(t('quiz.backBtn', 'Back')) +
           '</button>' +
-          '<button type="button" class="btn btn--primary quiz-next-btn" id="quiz-next-btn"' + (!selectedVal ? ' disabled' : '') + '>' +
+          '<button type="button" class="btn btn--primary btn--xs quiz-next-btn" id="quiz-next-btn"' + (!selectedVal ? ' disabled' : '') + '>' +
             escapeHtml(isLastStep ? t('quiz.seeMatchBtn', 'SEE MY MATCH') : t('quiz.nextBtn', 'Next Step')) +
           '</button>' +
         '</div>';
@@ -276,10 +278,10 @@
           '</div>' +
         '</div>' +
         '<div class="quiz-result-actions">' +
-          '<button type="button" class="btn btn--primary quiz-add-match-btn" id="quiz-add-match-btn">' +
+          '<button type="button" class="btn btn--primary btn--sm quiz-add-match-btn" id="quiz-add-match-btn">' +
             escapeHtml(t('quiz.addMatchBtn', 'ADD MATCH TO CART')) +
           '</button>' +
-          '<button type="button" class="btn btn--cream quiz-customize-btn" id="quiz-customize-btn">' +
+          '<button type="button" class="btn btn--outline-primary btn--xs quiz-customize-btn" id="quiz-customize-btn">' +
             escapeHtml(t('quiz.openConfiguratorBtn', 'Customize Further')) +
           '</button>' +
           '<button type="button" class="quiz-retake-btn" id="quiz-retake-btn">' +
@@ -579,6 +581,66 @@
   var caseStudyContentEl = document.getElementById('case-study-content');
   var copyFeedbackTimer = null;
   var lastCopiedHex = null;
+  var csSpecimenState = {
+    switchOn: true,
+    checkboxes: {
+      primary: true,
+      secondary: false,
+      accent: false
+    }
+  };
+
+  function buildSpecimenCheckboxHtml(variant, label) {
+    var checked = Boolean(csSpecimenState.checkboxes[variant]);
+    var asset = 'assets/checkbox-' + variant + '-on.svg';
+    return (
+      '<button type="button" class="ocb-checkbox ocb-checkbox--' + variant + (checked ? ' is-checked' : '') + '" ' +
+        'data-cs-checkbox="' + variant + '" aria-pressed="' + String(checked) + '" aria-label="' + escapeHtml(label) + '" title="' + escapeHtml(label) + '" style="padding:0;cursor:pointer">' +
+        (checked ? '<img src="' + asset + '" width="30" height="30" alt="">' : '') +
+      '</button>'
+    );
+  }
+
+  function buildSpecimenTextFieldHtml(opts) {
+    var fieldClass = 'form-field' + (opts.stateClass ? ' ' + opts.stateClass : '');
+    return (
+      '<div class="' + fieldClass + '">' +
+        '<label for="' + escapeHtml(opts.id) + '" class="field-label">' + escapeHtml(opts.label) + '</label>' +
+        '<input id="' + escapeHtml(opts.id) + '" type="' + escapeHtml(opts.type || 'text') + '" class="field-input" ' +
+          (opts.value ? 'value="' + escapeHtml(opts.value) + '" ' : '') +
+          (opts.placeholder ? 'placeholder="' + escapeHtml(opts.placeholder) + '" ' : '') +
+          (opts.disabled ? 'disabled ' : '') +
+        '>' +
+        (opts.error ? '<span class="field-error">' + escapeHtml(opts.error) + '</span>' : '') +
+      '</div>'
+    );
+  }
+
+  function buildSpecimenReviewCardHtml(opts) {
+    var starsHtml = '';
+    for (var s = 0; s < 5; s += 1) {
+      starsHtml += '<img class="ocb-star" src="assets/star-full.svg" width="26" height="23" alt="">';
+    }
+    return (
+      '<article class="review-card review-card--' + escapeHtml(opts.theme) + '">' +
+        '<div class="review-card-header">' +
+          '<div class="review-avatar" aria-hidden="true"><span>' + escapeHtml(opts.initials) + '</span></div>' +
+          '<div class="review-header-info">' +
+            '<h4 class="review-author-name">' + escapeHtml(opts.author.toUpperCase()) + '</h4>' +
+            '<div class="review-rating-row" aria-label="5.0">' +
+              starsHtml +
+              '<span class="review-rating-num">5.0</span>' +
+            '</div>' +
+          '</div>' +
+        '</div>' +
+        '<p class="review-quote">“' + escapeHtml(opts.quote) + '”</p>' +
+        '<footer class="review-footer">' +
+          '<span class="review-meta">' + escapeHtml(opts.meta) + '</span>' +
+          '<span class="review-verified">' + escapeHtml(opts.verified) + '</span>' +
+        '</footer>' +
+      '</article>'
+    );
+  }
 
   function fallbackCopyText(text) {
     var ta = document.createElement('textarea');
@@ -661,7 +723,7 @@
         '<div class="cs-meta-grid">' +
           '<div class="cs-meta-item"><span class="cs-meta-label">' + escapeHtml(t('caseStudy.roleLabel', 'Role')) + '</span><strong class="cs-meta-val">' + escapeHtml(pickLoc(meta.role)) + '</strong></div>' +
           '<div class="cs-meta-item"><span class="cs-meta-label">' + escapeHtml(t('caseStudy.timelineLabel', 'Timeline')) + '</span><strong class="cs-meta-val">' + escapeHtml(pickLoc(meta.timeline)) + '</strong></div>' +
-          '<div class="cs-meta-item"><span class="cs-meta-label">' + escapeHtml(t('caseStudy.versionLabel', 'Current Build')) + '</span><strong class="cs-meta-val cs-version-pill">' + escapeHtml(meta.version || 'v0.1.2') + '</strong></div>' +
+          '<div class="cs-meta-item"><span class="cs-meta-label">' + escapeHtml(t('caseStudy.versionLabel', 'Current Build')) + '</span><strong class="cs-meta-val cs-version-pill">' + escapeHtml(meta.version || 'v0.1.3') + '</strong></div>' +
         '</div>' +
         '<div class="cs-meta-tags-row">' +
           '<div class="cs-meta-tag-group"><span class="cs-meta-label">' + escapeHtml(t('caseStudy.deliverablesLabel', 'Deliverables')) + ':</span><div class="cs-chip-list">' +
@@ -742,7 +804,7 @@
       '<section class="cs-section cs-evolution-section">' +
         '<div class="cs-section-head">' +
           '<p class="cs-section-eyebrow">' + escapeHtml(t('caseStudy.evolutionEyebrow', 'ITERATIVE SHIP LOG')) + '</p>' +
-          '<h2 class="cs-section-title">' + escapeHtml(t('caseStudy.evolutionHeading', 'Product Evolution (v0.1 -> v0.1.2)')) + '</h2>' +
+          '<h2 class="cs-section-title">' + escapeHtml(t('caseStudy.evolutionHeading', 'Product Evolution (v0.1 -> v0.1.3)')) + '</h2>' +
         '</div>' +
         '<div class="cs-evolution-grid">' +
           evolution.map(function (evo) {
@@ -768,7 +830,8 @@
 
     var swatchesHtml = tokens.map(function (tok) {
       var isCopied = lastCopiedHex === tok.hex;
-      var lightSwatch = tok.hex.toUpperCase() === '#FFF2E6' || tok.hex.toUpperCase() === '#E7DBCF' || tok.hex.toUpperCase() === '#FEC51B' || tok.hex.toUpperCase() === '#4EEEA6';
+      var hexUpper = String(tok.hex || '').toUpperCase();
+      var lightSwatch = ['#FFF2E6', '#E7DBCF', '#C0AE90', '#FEC51B', '#FACD66', '#4EEEA6', '#F0F0F0', '#D2D2D2', '#BEBEBE'].indexOf(hexUpper) !== -1;
       return (
         '<button type="button" class="cs-swatch-card' + (isCopied ? ' is-copied' : '') + '" data-copy-hex="' + escapeHtml(tok.hex) + '">' +
           '<span class="cs-swatch-color' + (lightSwatch ? ' is-light' : '') + '" style="background-color:' + escapeHtml(tok.hex) + '">' +
@@ -797,25 +860,94 @@
       );
     }).join('');
 
-    var componentHeading = lang === 'pt-BR' ? 'Estados de Botões e Campos' : 'Button & Input State Specimens';
+    var isPt = lang === 'pt-BR';
+    var componentHeading = t('caseStudy.componentsHeading', 'Figma 103:57 Component Specimens');
+    var componentSubtitle = t('caseStudy.componentsSubtitle', 'Live interactive primitives aligned directly to the Figma Components & Style Guides pages.');
+    var switchOn = csSpecimenState.switchOn;
+
+    var logosSpec = [
+      { file: 'logo-green.svg', label: 'Primary', dark: false },
+      { file: 'logo-dark.svg', label: 'Dark', dark: false },
+      { file: 'logo-cream.svg', label: 'Secondary', dark: true },
+      { file: 'logo-accent.svg', label: 'Accent', dark: true },
+      { file: 'logo-white.svg', label: 'White', dark: true }
+    ];
+
     var stateChipsHtml =
       '<div class="cs-components-preview">' +
         '<h3 class="cs-sub-heading">' + escapeHtml(componentHeading) + '</h3>' +
-        '<div class="cs-states-grid">' +
-          '<div class="cs-state-card">' +
-            '<span class="cs-state-label">' + escapeHtml(lang === 'pt-BR' ? 'Botões Primário & Destaque' : 'Primary & Accent CTAs') + '</span>' +
-            '<div class="cs-state-row">' +
-              '<button type="button" class="btn btn--primary cs-preview-btn" data-nav="shop">' + escapeHtml(t('shop.configureBtn', 'CONFIGURE BAG')) + '</button>' +
-              '<button type="button" class="btn btn--accent cs-preview-btn" data-action="open-quiz">' + escapeHtml(t('quiz.heroTriggerBtn', 'TAKE THE 30-SEC COFFEE QUIZ')) + '</button>' +
+        '<p class="cs-components-sub">' + escapeHtml(componentSubtitle) + '</p>' +
+        '<div class="cs-figma-grid">' +
+          '<div class="cs-specimen-card">' +
+            '<span class="cs-specimen-title">' + escapeHtml(isPt ? 'Button (116:112) — Sólido & Outline' : 'Button (116:112) — Solid & Outline') + '</span>' +
+            '<div class="cs-specimen-row">' +
+              '<button type="button" class="btn btn--primary btn--xs" data-nav="shop">' + escapeHtml(isPt ? 'Primário' : 'Primary') + '</button>' +
+              '<button type="button" class="btn btn--secondary btn--xs" data-nav="features">' + escapeHtml(isPt ? 'Secundário' : 'Secondary') + '</button>' +
+              '<button type="button" class="btn btn--accent btn--xs" data-action="open-quiz">' + escapeHtml(isPt ? 'Destaque' : 'Accent') + '</button>' +
+              '<button type="button" class="btn btn--outline-primary btn--xs" data-nav="cart">' + escapeHtml(isPt ? 'Outline Primário' : 'Primary Outline') + '</button>' +
+            '</div>' +
+            '<div class="cs-dark-surface">' +
+              '<button type="button" class="btn btn--outline-secondary btn--xs" data-nav="features">' + escapeHtml(isPt ? 'Outline Secundário' : 'Secondary Outline') + '</button>' +
+              '<button type="button" class="btn btn--outline-accent btn--xs" data-action="open-quiz">' + escapeHtml(isPt ? 'Outline Destaque' : 'Accent Outline') + '</button>' +
             '</div>' +
           '</div>' +
-          '<div class="cs-state-card">' +
-            '<span class="cs-state-label">' + escapeHtml(lang === 'pt-BR' ? 'Filtros & Estados de Campo' : 'Filter Pills & Input States') + '</span>' +
-            '<div class="cs-state-row">' +
-              '<span class="cs-state-chip is-active">' + escapeHtml(t('shop.filterEspresso', 'Espresso')) + '</span>' +
-              '<span class="cs-state-chip">' + escapeHtml(t('shop.filterSingleOrigin', 'Single-Origin')) + '</span>' +
-              '<span class="cs-input-chip is-valid">' + escapeHtml(lang === 'pt-BR' ? '✓ E-mail válido' : '✓ Valid email') + '</span>' +
-              '<span class="cs-input-chip is-error">' + escapeHtml(lang === 'pt-BR' ? '! Campo obrigatório' : '! Required field') + '</span>' +
+          '<div class="cs-specimen-card">' +
+            '<span class="cs-specimen-title">' + escapeHtml(isPt ? 'Switch (116:64), Checkbox (117:514) & Star (117:260)' : 'Switch (116:64), Checkbox (117:514) & Star (117:260)') + '</span>' +
+            '<div class="cs-specimen-row">' +
+              '<button type="button" class="ocb-switch' + (switchOn ? ' is-on' : '') + '" data-cs-switch role="switch" aria-checked="' + String(switchOn) + '" aria-label="' + escapeHtml(isPt ? 'Alternar assinatura' : 'Toggle subscription') + '">' +
+                '<img class="ocb-switch-img" src="assets/switch-' + (switchOn ? 'on' : 'off') + '.svg" width="36" height="17" alt="">' +
+              '</button>' +
+              buildSpecimenCheckboxHtml('primary', isPt ? 'Checkbox Primário' : 'Primary Checkbox') +
+              buildSpecimenCheckboxHtml('secondary', isPt ? 'Checkbox Secundário' : 'Secondary Checkbox') +
+              buildSpecimenCheckboxHtml('accent', isPt ? 'Checkbox Destaque' : 'Accent Checkbox') +
+            '</div>' +
+            '<div class="cs-specimen-row" style="margin-top:14px">' +
+              '<img class="ocb-star" src="assets/star-full.svg" width="26" height="23" alt="' + escapeHtml(isPt ? 'Estrela cheia' : 'Full star') + '">' +
+              '<img class="ocb-star" src="assets/star-half.svg" width="26" height="23" alt="' + escapeHtml(isPt ? 'Meia estrela' : 'Half star') + '">' +
+              '<img class="ocb-star" src="assets/star-empty.svg" width="26" height="23" alt="' + escapeHtml(isPt ? 'Estrela vazia' : 'Empty star') + '">' +
+            '</div>' +
+          '</div>' +
+          '<div class="cs-specimen-card cs-specimen-card--full">' +
+            '<span class="cs-specimen-title">' + escapeHtml(isPt ? 'Text Field (118:614) — Estados' : 'Text Field (118:614) — States') + '</span>' +
+            '<div class="cs-textfield-grid">' +
+              buildSpecimenTextFieldHtml({ id: 'cs-tf-default', label: isPt ? 'Padrão' : 'Default', placeholder: isPt ? 'nome@email.com' : 'name@email.com' }) +
+              buildSpecimenTextFieldHtml({ id: 'cs-tf-active', label: isPt ? 'Ativo / Válido' : 'Active / Valid', value: 'chloe@oliviacoffee.com', stateClass: 'is-valid' }) +
+              buildSpecimenTextFieldHtml({ id: 'cs-tf-disabled', label: isPt ? 'Desabilitado' : 'Disabled', value: isPt ? 'Campo bloqueado' : 'Locked value', stateClass: 'is-disabled', disabled: true }) +
+              buildSpecimenTextFieldHtml({ id: 'cs-tf-error', label: isPt ? 'Erro' : 'Error', value: 'chloe@invalid', stateClass: 'is-error', error: isPt ? 'Informe um e-mail válido.' : 'Enter a valid email address.' }) +
+            '</div>' +
+          '</div>' +
+          '<div class="cs-specimen-card cs-specimen-card--full">' +
+            '<span class="cs-specimen-title">' + escapeHtml(isPt ? 'ReviewCard (121:124) — Claro & Escuro' : 'ReviewCard (121:124) — Light & Dark Modes') + '</span>' +
+            '<div class="cs-review-pair">' +
+              buildSpecimenReviewCardHtml({
+                theme: 'light',
+                initials: 'CA',
+                author: 'Camila Andrade',
+                quote: isPt ? 'Crema de avelã densa toda manhã e pacote 100% compostável.' : 'Thick hazelnut crema every morning and a 100% compostable pouch.',
+                meta: 'Belo Horizonte, MG · DarkMode Card',
+                verified: t('reviews.verifiedBadge', 'Verified Buyer')
+              }) +
+              buildSpecimenReviewCardHtml({
+                theme: 'dark',
+                initials: 'MV',
+                author: 'Marcus Vance',
+                quote: isPt ? 'Acidez cítrica limpa na V60 e rastreabilidade exemplar da fazenda.' : 'Clean citrus clarity on V60 and transparent farm traceability.',
+                meta: 'Portland, OR · LightMode Card',
+                verified: t('reviews.verifiedBadge', 'Verified Buyer')
+              }) +
+            '</div>' +
+          '</div>' +
+          '<div class="cs-specimen-card cs-specimen-card--full">' +
+            '<span class="cs-specimen-title">' + escapeHtml(isPt ? 'Logo (121:48) — 5 Variantes' : 'Logo (121:48) — 5 Brand Variants') + '</span>' +
+            '<div class="cs-logo-grid">' +
+              logosSpec.map(function (lg) {
+                return (
+                  '<div class="cs-logo-tile' + (lg.dark ? ' cs-logo-tile--dark' : '') + '">' +
+                    '<img src="assets/' + lg.file + '" width="175" height="57" alt="Olívia Coffee Beans ' + escapeHtml(lg.label) + ' Logo">' +
+                    '<span>' + escapeHtml(lg.label) + '</span>' +
+                  '</div>'
+                );
+              }).join('') +
             '</div>' +
           '</div>' +
         '</div>' +
@@ -849,6 +981,34 @@
 
   if (caseStudyContentEl) {
     caseStudyContentEl.addEventListener('click', function (e) {
+      var switchBtn = e.target.closest('[data-cs-switch]');
+      if (switchBtn) {
+        csSpecimenState.switchOn = !csSpecimenState.switchOn;
+        var nextOn = csSpecimenState.switchOn;
+        switchBtn.setAttribute('aria-checked', String(nextOn));
+        switchBtn.classList.toggle('is-on', nextOn);
+        var switchImg = switchBtn.querySelector('.ocb-switch-img');
+        if (switchImg) {
+          switchImg.src = nextOn ? 'assets/switch-on.svg' : 'assets/switch-off.svg';
+        }
+        return;
+      }
+
+      var checkBtn = e.target.closest('[data-cs-checkbox]');
+      if (checkBtn) {
+        var variant = checkBtn.dataset.csCheckbox;
+        if (variant && Object.prototype.hasOwnProperty.call(csSpecimenState.checkboxes, variant)) {
+          var nextChecked = !csSpecimenState.checkboxes[variant];
+          csSpecimenState.checkboxes[variant] = nextChecked;
+          checkBtn.setAttribute('aria-pressed', String(nextChecked));
+          checkBtn.classList.toggle('is-checked', nextChecked);
+          checkBtn.innerHTML = nextChecked
+            ? '<img src="assets/checkbox-' + variant + '-on.svg" width="30" height="30" alt="">'
+            : '';
+        }
+        return;
+      }
+
       var swatchBtn = e.target.closest('[data-copy-hex]');
       if (swatchBtn) {
         copyHexToken(swatchBtn.dataset.copyHex, swatchBtn);

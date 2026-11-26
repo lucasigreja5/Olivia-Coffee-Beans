@@ -99,7 +99,7 @@
 
             <div class="hero-actions">
               <button type="button" class="btn btn--accent btn--hero" data-action="buy-now" data-i18n="hero.buyNow">BUY NOW</button>
-              <a href="#features" class="btn btn--outline-cream btn--hero" data-nav="features" data-i18n="hero.learnMore">LEARN MORE</a>
+              <a href="#features" class="btn btn--outline-cream btn--outline-secondary btn--hero" data-nav="features" data-i18n="hero.learnMore">LEARN MORE</a>
             </div>
 
             <button type="button" class="newsletter-trigger" data-action="open-newsletter" data-i18n="hero.newsletterTrigger">
@@ -186,7 +186,7 @@
           </div>
 
           <div class="section-cta-wrap">
-            <a href="#features" class="btn btn--outline-cream btn--section-cta" data-nav="features" data-i18n="valueProps.ctaStory">READ FULL IMPACT STORY</a>
+            <a href="#features" class="btn btn--outline-cream btn--outline-secondary btn--section-cta" data-nav="features" data-i18n="valueProps.ctaStory">READ FULL IMPACT STORY</a>
           </div>
         </div>
       </section>
@@ -497,6 +497,14 @@
             </div>
           </div>
 
+          <label class="ocb-checkbox-row" for="field-compost-card">
+            <input type="checkbox" id="field-compost-card" name="compostCard" class="ocb-checkbox-native">
+            <span class="ocb-checkbox ocb-checkbox--primary" aria-hidden="true">
+              <img src="assets/checkbox-primary-on.svg" width="30" height="30" alt="">
+            </span>
+            <span class="ocb-checkbox-text" data-i18n="checkout.compostCardLabel">Include a zero-waste brewing &amp; composting card (optional)</span>
+          </label>
+
           <button type="submit" class="btn btn--primary btn--purchase" id="purchase-btn" data-i18n="checkout.purchaseBtn">PURCHASE</button>
         </form>
       </div>
@@ -544,7 +552,7 @@
           </p>
           <div class="cs-hero-actions">
             <a href="#shop" class="btn btn--accent" data-nav="shop" data-i18n="caseStudy.backToStoreBtn">EXPLORE LIVE STOREFRONT</a>
-            <button type="button" class="btn btn--outline-cream" data-action="open-quiz" data-i18n="caseStudy.tryQuizBtn">TRY THE COFFEE QUIZ</button>
+            <button type="button" class="btn btn--outline-cream btn--outline-secondary" data-action="open-quiz" data-i18n="caseStudy.tryQuizBtn">TRY THE COFFEE QUIZ</button>
           </div>
         </header>
         <div class="case-study-content" id="case-study-content"></div>
@@ -610,7 +618,7 @@
 
       <div class="footer-bottom">
         <p class="footer-copy" data-i18n="footer.copyright">© 2026 Olívia Coffee Beans. All rights reserved.</p>
-        <p class="footer-attribution"><span data-i18n="footer.version">Olívia Coffee Beans v0.1.2</span> · <span data-i18n="footer.demoNote">Interactive storefront experience — no real charges are processed.</span></p>
+        <p class="footer-attribution"><span data-i18n="footer.version">Olívia Coffee Beans v0.1.3</span> · <span data-i18n="footer.demoNote">Interactive storefront experience — no real charges are processed.</span></p>
       </div>
     </footer>
   </main>
@@ -656,6 +664,15 @@
 
           <div class="pm-option-group">
             <span class="pm-option-label" data-i18n="modal.cadenceLabel">Delivery Frequency</span>
+            <div class="ocb-switch-row" id="pm-sub-switch-wrap">
+              <button type="button" role="switch" id="pm-sub-switch" class="ocb-switch" aria-checked="false" aria-labelledby="pm-sub-switch-label">
+                <img class="ocb-switch-img" id="pm-sub-switch-img" src="assets/switch-off.svg" width="36" height="17" alt="">
+              </button>
+              <div class="ocb-switch-copy">
+                <span class="ocb-switch-label" id="pm-sub-switch-label" data-i18n="modal.subscribeSwitchLabel">Subscribe &amp; Save 15% + Free Shipping</span>
+                <span class="ocb-switch-hint" data-i18n="modal.subscribeSwitchHint">Toggle on for recurring deliveries — pause or cancel anytime.</span>
+              </div>
+            </div>
             <div class="pm-cadences" id="pm-cadences"></div>
             <p class="pm-sub-perks" data-i18n="modal.subscriptionPerks">
               Subscribers save 15% on every order and always get free carbon-neutral shipping.
@@ -713,9 +730,9 @@
 
     <div class="cd-footer" id="cd-footer">
       <form class="cd-promo-form" id="cd-promo-form" novalidate>
-        <label for="cd-promo-input" class="cd-promo-label" data-i18n="cartDrawer.promoLabel">Promo Code</label>
+        <label for="cd-promo-input" class="field-label cd-promo-label" data-i18n="cartDrawer.promoLabel">Promo Code</label>
         <div class="cd-promo-row">
-          <input type="text" id="cd-promo-input" class="cd-promo-input" data-i18n-placeholder="cartDrawer.promoPlaceholder" placeholder="OLIVIA15, BEMVINDO15, or FREESHIP" autocomplete="off">
+          <input type="text" id="cd-promo-input" class="field-input cd-promo-input" data-i18n-placeholder="cartDrawer.promoPlaceholder" placeholder="OLIVIA15, BEMVINDO15, or FREESHIP" autocomplete="off">
           <button type="submit" class="btn btn--cream cd-promo-apply" id="cd-promo-apply-btn" data-i18n="cartDrawer.promoApplyBtn">APPLY</button>
         </div>
         <p class="cd-promo-feedback" id="cd-promo-feedback" aria-live="polite"></p>

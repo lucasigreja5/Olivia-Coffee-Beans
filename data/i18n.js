@@ -133,7 +133,7 @@
         newsletterDesc: 'Get early access to micro-lots and 15% off your first bag with code OLIVIA15.',
         newsletterBtn: 'JOIN NEWSLETTER',
         promoHint: 'Welcome codes: OLIVIA15 / BEMVINDO15 (15% off) or FREESHIP',
-        version: 'Olívia Coffee Beans v0.1.2',
+        version: 'Olívia Coffee Beans v0.1.3',
         copyright: '© 2026 Olívia Coffee Beans. All rights reserved.',
         demoNote: 'Interactive storefront experience — no real charges are processed.'
       },
@@ -170,6 +170,9 @@
         fixedSizeNote: 'Curated 3 x 150g tasting box (450g total) — size cannot be changed.',
         grindLabel: 'Grind Option',
         cadenceLabel: 'Delivery Frequency',
+        subscribeSwitchLabel: 'Subscribe & Save 15% + Free Shipping',
+        subscribeSwitchHint: 'Toggle on for recurring deliveries — pause or cancel anytime.',
+        subscribeCadenceLabel: 'Choose Delivery Cadence',
         subscriptionPerks: 'Subscribers save 15% on every order and always get free carbon-neutral shipping.',
         quantityLabel: 'Quantity',
         decreaseQtyAria: 'Decrease quantity',
@@ -248,6 +251,7 @@
         cvcPlaceholder: '000',
         cvcAria: 'What is CVC?',
         cvcTooltip: '3 or 4 security digits on the back of your card',
+        compostCardLabel: 'Include a zero-waste brewing & composting card (optional)',
         purchaseBtn: 'PURCHASE',
         processingBtn: 'PACKING YOUR ORDER...',
         demoPaymentNote: 'Simulated checkout for demonstration — no real payment is charged.'
@@ -373,11 +377,13 @@
         solutionLabel: 'Design Solution',
         kpiLabel: 'Result',
         evolutionEyebrow: 'ITERATIVE SHIP LOG',
-        evolutionHeading: 'Product Evolution (v0.1 -> v0.1.2)',
+        evolutionHeading: 'Product Evolution (v0.1 -> v0.1.3)',
         tokensEyebrow: 'FIGMA DESIGN SYSTEM',
         tokensHeading: 'Color Tokens & Typography',
         colorsSubheading: 'Semantic Palette',
         typographySubheading: 'Type Hierarchy',
+        componentsHeading: 'Figma 103:57 Component Specimens',
+        componentsSubtitle: 'Live interactive primitives aligned directly to the Figma Components & Style Guides pages.',
         backToStoreBtn: 'EXPLORE LIVE STOREFRONT',
         tryQuizBtn: 'TRY THE COFFEE QUIZ'
       }
@@ -495,7 +501,7 @@
         newsletterDesc: 'Receba acesso antecipado a microlotes e 15% OFF no primeiro pacote com o cupom BEMVINDO15.',
         newsletterBtn: 'ASSINAR NEWSLETTER',
         promoHint: 'Cupons de boas-vindas: BEMVINDO15 / OLIVIA15 (15% OFF) ou FREESHIP',
-        version: 'Olívia Coffee Beans v0.1.2',
+        version: 'Olívia Coffee Beans v0.1.3',
         copyright: '© 2026 Olívia Coffee Beans. Todos os direitos reservados.',
         demoNote: 'Loja interativa de demonstração — nenhuma cobrança real é efetuada.'
       },
@@ -532,6 +538,9 @@
         fixedSizeNote: 'Caixa degustação fechada com 3 x 150g (450g no total) — peso fixo.',
         grindLabel: 'Tipo de Moagem',
         cadenceLabel: 'Frequência de Entrega',
+        subscribeSwitchLabel: 'Assine e Economize 15% + Frete Grátis',
+        subscribeSwitchHint: 'Ative para entregas recorrentes — pause ou cancele quando quiser.',
+        subscribeCadenceLabel: 'Escolha a Frequência de Entrega',
         subscriptionPerks: 'Assinantes economizam 15% em todos os pedidos e ganham frete grátis carbono neutro sempre.',
         quantityLabel: 'Quantidade',
         decreaseQtyAria: 'Diminuir quantidade',
@@ -610,6 +619,7 @@
         cvcPlaceholder: '000',
         cvcAria: 'O que é CVC?',
         cvcTooltip: '3 ou 4 dígitos de segurança no verso do cartão',
+        compostCardLabel: 'Incluir cartão de preparo e compostagem sem lixo (opcional)',
         purchaseBtn: 'FINALIZAR COMPRA',
         processingBtn: 'EMBALANDO SEU PEDIDO...',
         demoPaymentNote: 'Checkout simulado para demonstração — nenhuma cobrança real será feita.'
@@ -735,11 +745,13 @@
         solutionLabel: 'Solução de Design',
         kpiLabel: 'Resultado',
         evolutionEyebrow: 'REGISTRO DE EVOLUÇÃO',
-        evolutionHeading: 'Evolução do Produto (v0.1 -> v0.1.2)',
+        evolutionHeading: 'Evolução do Produto (v0.1 -> v0.1.3)',
         tokensEyebrow: 'DESIGN SYSTEM NO FIGMA',
         tokensHeading: 'Tokens de Cor e Tipografia',
         colorsSubheading: 'Paleta Semântica',
         typographySubheading: 'Hierarquia Tipográfica',
+        componentsHeading: 'Espécimes dos Componentes Figma (103:57)',
+        componentsSubtitle: 'Primitivas interativas alinhadas diretamente às páginas Components e Style Guides do Figma.',
         backToStoreBtn: 'EXPLORAR A LOJA AO VIVO',
         tryQuizBtn: 'TESTAR O QUIZ DO CAFÉ'
       }
