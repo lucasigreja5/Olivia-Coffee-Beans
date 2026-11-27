@@ -219,6 +219,60 @@
       }
     },
     {
+      id: 'mantiqueira-bloom',
+      sku: 'OCB-SOG-006',
+      name: {
+        en: 'Mantiqueira Morning Bloom',
+        'pt-BR': 'Florada da Mantiqueira'
+      },
+      origin: {
+        en: 'Serra da Mantiqueira, MG',
+        'pt-BR': 'Serra da Mantiqueira, MG'
+      },
+      category: 'single-origin',
+      featured: false,
+      fixedSize: false,
+      defaultSize: '250g',
+      image: 'assets/product-mantiqueira-bloom.jpg',
+      isKraftOverlay: false,
+      priceUsd: 27.00,
+      priceBrl: 134.00,
+      roastType: 'light-medium',
+      roastLevel: 2,
+      roastLabel: {
+        en: 'Light-Medium',
+        'pt-BR': 'Clara-Média'
+      },
+      altitude: '1,450m',
+      process: {
+        en: 'Natural Anaerobic Honey',
+        'pt-BR': 'Honey Anaeróbico Natural'
+      },
+      tastingNotes: {
+        en: ['Jasmine Blossom', 'Ripe Peach', 'Cane Sugar'],
+        'pt-BR': ['Flor de Jasmim', 'Pêssego Maduro', 'Caldo de Cana']
+      },
+      badge: {
+        en: 'Micro-Lot',
+        'pt-BR': 'Microlote'
+      },
+      shortDescription: {
+        en: 'Silky floral aromatics and ripe peach sweetness from 1,450m Mantiqueira family farms.',
+        'pt-BR': 'Aromas florais sedosos e doçura de pêssego maduro das montanhas da Mantiqueira a 1.450m.'
+      },
+      description: {
+        en: 'Hand-picked at 1,450m in Carmo de Minas along the Serra da Mantiqueira ridge. Slow anaerobic honey drying unlocks jasmine aromatics, juicy stone-fruit clarity, and a silky cane-sugar finish.',
+        'pt-BR': 'Colhido à mão a 1.450m em Carmo de Minas na Serra da Mantiqueira. A secagem honey anaeróbica revela aromas de jasmim, notas suculentas de pêssego e finalização sedosa de caldo de cana.'
+      },
+      lotMetadata: {
+        farm: 'Fazenda Alto da Serra',
+        harvestDate: '2026-08',
+        roastDate: '2026-11-23',
+        wagePremiumPct: 44,
+        co2OffsetKg: 1.3
+      }
+    },
+    {
       id: 'discovery-flight',
       sku: 'OCB-BND-005',
       name: {
@@ -454,6 +508,7 @@
     {
       id: 'rev-1',
       author: 'Camila Andrade',
+      avatar: 'assets/reviewer-camila.jpg',
       location: 'Belo Horizonte, MG',
       rating: 5,
       verified: true,
@@ -475,6 +530,7 @@
     {
       id: 'rev-2',
       author: 'Marcus Vance',
+      avatar: 'assets/reviewer-marcus.jpg',
       location: 'Portland, OR',
       rating: 5,
       verified: true,
@@ -496,6 +552,7 @@
     {
       id: 'rev-3',
       author: 'Sofia & Rafael M.',
+      avatar: 'assets/reviewer-sofia-rafael.jpg',
       location: 'São Paulo, SP',
       rating: 5,
       verified: true,

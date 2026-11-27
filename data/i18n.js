@@ -65,7 +65,6 @@
         openMenuAria: 'Open navigation menu',
         closeMenuAria: 'Close navigation menu',
         openCartAria: 'Open shopping cart drawer',
-        newsletter: 'NEWSLETTER',
         homeAria: 'Olívia Coffee Beans Home'
       },
       hero: {
@@ -76,7 +75,6 @@
         buyNow: 'BUY NOW',
         shopRoasts: 'EXPLORE ROASTS',
         learnMore: 'LEARN MORE',
-        newsletterTrigger: 'Join our newsletter for roastery updates & offers',
         heroImgAlt: 'Hand holding an iced espresso glass'
       },
       featured: {
@@ -85,7 +83,7 @@
         subtitle: 'Solar-roasted to order from family farms in Minas Gerais and Bahia. Configure grind, bag size, or a 15% off subscription.',
         configureBtn: 'CONFIGURE & ADD',
         quickAddBtn: 'QUICK ADD',
-        viewAllBtn: 'VIEW ALL 5 ROASTS'
+        viewAllBtn: 'LEARN MORE ABOUT OUR ROASTS'
       },
       valueProps: {
         eyebrow: 'WHY OLÍVIA',
@@ -129,11 +127,8 @@
         tagline: 'Eco-first Brazilian specialty coffee. Solar-roasted, direct-trade, and 100% compostable.',
         exploreHeading: 'Explore',
         commitmentsHeading: 'Commitments',
-        newsletterHeading: 'Roastery Notes',
-        newsletterDesc: 'Get early access to micro-lots and 15% off your first bag with code OLIVIA15.',
-        newsletterBtn: 'JOIN NEWSLETTER',
         promoHint: 'Welcome codes: OLIVIA15 / BEMVINDO15 (15% off) or FREESHIP',
-        version: 'Olívia Coffee Beans v0.2',
+        version: 'Olívia Coffee Beans v0.3',
         copyright: '© 2026 Olívia Coffee Beans. All rights reserved.',
         demoNote: 'Interactive storefront experience — no real charges are processed.'
       },
@@ -263,8 +258,7 @@
         cardNumber: 'Enter a valid 13 to 19-digit card number.',
         expiry: 'Use valid MM/YY format.',
         cvc: 'Enter 3 or 4 security digits.',
-        emptyCart: 'Please add at least one coffee bag to your cart before purchasing.',
-        newsletterEmail: 'Please enter a valid email address.'
+        emptyCart: 'Please add at least one coffee bag to your cart before purchasing.'
       },
       confirmation: {
         title: 'CONGRATULATIONS!',
@@ -286,15 +280,6 @@
         shareCopied: 'Invite link copied to clipboard!',
         shareReady: 'Ready to share with friends!',
         returnHomeBtn: 'RETURN HOME'
-      },
-      newsletter: {
-        closeAria: 'Close newsletter popup',
-        title: 'JOIN OUR NEWSLETTER!',
-        subtitle: 'And don’t miss out on the latest news, promotions and deals on our products!',
-        emailLabel: 'Email Address',
-        emailPlaceholder: 'youremail@mail.com',
-        subscribeBtn: 'SUBSCRIBE',
-        successMessage: 'You’re subscribed! Watch your inbox for our next small-batch roast (and use OLIVIA15 for 15% off).'
       },
       quiz: {
         eyebrow: 'PERSONALIZED MATCH IN 30 SECONDS',
@@ -377,7 +362,7 @@
         solutionLabel: 'Design Solution',
         kpiLabel: 'Result',
         evolutionEyebrow: 'ITERATIVE SHIP LOG',
-        evolutionHeading: 'Product Evolution (v0.1 -> v0.2)',
+        evolutionHeading: 'Product Evolution (v0.1 -> v0.3)',
         tokensEyebrow: 'FIGMA DESIGN SYSTEM',
         tokensHeading: 'Color Tokens & Typography',
         colorsSubheading: 'Semantic Palette',
@@ -433,7 +418,6 @@
         openMenuAria: 'Abrir menu de navegação',
         closeMenuAria: 'Fechar menu de navegação',
         openCartAria: 'Abrir gaveta do carrinho',
-        newsletter: 'NEWSLETTER',
         homeAria: 'Olívia Coffee Beans Início'
       },
       hero: {
@@ -444,7 +428,6 @@
         buyNow: 'COMPRAR AGORA',
         shopRoasts: 'EXPLORAR CAFÉS',
         learnMore: 'SAIBA MAIS',
-        newsletterTrigger: 'Assine nossa newsletter para novidades da torrefação e ofertas',
         heroImgAlt: 'Mão segurando um copo de espresso gelado'
       },
       featured: {
@@ -453,7 +436,7 @@
         subtitle: 'Torrados sob demanda com energia solar direto de fazendas familiares em Minas Gerais e na Bahia. Escolha moagem, peso ou assinatura com 15% OFF.',
         configureBtn: 'CONFIGURAR E ADICIONAR',
         quickAddBtn: 'ADICIONAR',
-        viewAllBtn: 'VER TODOS OS 5 CAFÉS'
+        viewAllBtn: 'SAIBA MAIS SOBRE NOSSOS CAFÉS'
       },
       valueProps: {
         eyebrow: 'POR QUE A OLÍVIA',
@@ -497,11 +480,8 @@
         tagline: 'Café especial brasileiro eco-first. Torra solar, comércio direto e embalagem 100% compostável.',
         exploreHeading: 'Explorar',
         commitmentsHeading: 'Compromissos',
-        newsletterHeading: 'Notas da Torrefação',
-        newsletterDesc: 'Receba acesso antecipado a microlotes e 15% OFF no primeiro pacote com o cupom BEMVINDO15.',
-        newsletterBtn: 'ASSINAR NEWSLETTER',
         promoHint: 'Cupons de boas-vindas: BEMVINDO15 / OLIVIA15 (15% OFF) ou FREESHIP',
-        version: 'Olívia Coffee Beans v0.2',
+        version: 'Olívia Coffee Beans v0.3',
         copyright: '© 2026 Olívia Coffee Beans. Todos os direitos reservados.',
         demoNote: 'Loja interativa de demonstração — nenhuma cobrança real é efetuada.'
       },
@@ -631,8 +611,7 @@
         cardNumber: 'Informe um número de cartão válido (13 a 19 dígitos).',
         expiry: 'Use o formato válido MM/AA.',
         cvc: 'Informe 3 ou 4 dígitos de segurança.',
-        emptyCart: 'Adicione pelo menos um pacote de café ao carrinho antes de comprar.',
-        newsletterEmail: 'Por favor, informe um endereço de e-mail válido.'
+        emptyCart: 'Adicione pelo menos um pacote de café ao carrinho antes de comprar.'
       },
       confirmation: {
         title: 'PARABÉNS!',
@@ -654,15 +633,6 @@
         shareCopied: 'Link de convite copiado!',
         shareReady: 'Pronto para compartilhar com amigos!',
         returnHomeBtn: 'VOLTAR AO INÍCIO'
-      },
-      newsletter: {
-        closeAria: 'Fechar janela da newsletter',
-        title: 'ASSINE NOSSA NEWSLETTER!',
-        subtitle: 'E não perca as últimas novidades, promoções e lançamentos exclusivos da torrefação!',
-        emailLabel: 'Seu E-mail',
-        emailPlaceholder: 'seuemail@exemplo.com',
-        subscribeBtn: 'INSCREVER-SE',
-        successMessage: 'Inscrição confirmada! Fique de olho no seu e-mail para o próximo microlote (e use BEMVINDO15 para 15% OFF).'
       },
       quiz: {
         eyebrow: 'RECOMENDAÇÃO EM 30 SEGUNDOS',
@@ -745,7 +715,7 @@
         solutionLabel: 'Solução de Design',
         kpiLabel: 'Resultado',
         evolutionEyebrow: 'REGISTRO DE EVOLUÇÃO',
-        evolutionHeading: 'Evolução do Produto (v0.1 -> v0.2)',
+        evolutionHeading: 'Evolução do Produto (v0.1 -> v0.3)',
         tokensEyebrow: 'DESIGN SYSTEM NO FIGMA',
         tokensHeading: 'Tokens de Cor e Tipografia',
         colorsSubheading: 'Paleta Semântica',

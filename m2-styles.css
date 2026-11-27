@@ -49,50 +49,80 @@ body[data-view="case-study"] .site-footer {
 /* --------------------------------------------------------------------------
    2. COFFEE MATCH QUIZ BANNERS (#home & #shop)
    -------------------------------------------------------------------------- */
-.quiz-banner-section {
-  background: var(--ocb-secondary-1);
-  padding: 44px 20px;
-}
-
 .quiz-banner {
   position: relative;
   overflow: hidden;
+  width: 100%;
+  text-align: left;
+  font: inherit;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
   border-radius: var(--ocb-radius-card, 8px);
   padding: 26px 22px;
-  background: linear-gradient(135deg, var(--ocb-primary-2) 0%, #204E3E 54%, var(--ocb-primary-1) 100%);
+  background: var(--ocb-primary-2);
   color: var(--ocb-secondary-3);
-  border: 2px solid rgba(254, 197, 27, 0.48);
+  border: 2px solid rgba(254, 197, 27, 0.55);
   box-shadow: var(--ocb-shadow-card, 0 4px 4px rgba(0, 0, 0, 0.25));
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: space-between;
   gap: 20px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
 }
 
-.quiz-banner::before {
-  content: "";
+.quiz-banner:hover {
+  transform: translateY(-3px);
+  border-color: var(--ocb-accent-1);
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.28);
+}
+
+.quiz-banner-bg {
   position: absolute;
-  top: -70px;
-  right: -70px;
-  width: 220px;
-  height: 220px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(254, 197, 27, 0.2) 0%, rgba(254, 197, 27, 0) 70%);
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
   pointer-events: none;
 }
 
+.quiz-banner-bg-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 62%;
+  transition: transform 0.35s ease;
+}
+
+.quiz-banner:hover .quiz-banner-bg-img {
+  transform: scale(1.03);
+}
+
+.quiz-banner-scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(16, 28, 20, 0.82) 0%, rgba(16, 28, 20, 0.58) 55%, rgba(16, 28, 20, 0.42) 100%);
+}
+
+.quiz-banner--home {
+  max-width: 1162px;
+  margin: 0 auto 36px;
+}
+
 .quiz-banner--shop {
-  margin-bottom: 28px;
+  max-width: 1162px;
+  margin: 0 auto 32px;
 }
 
 .quiz-banner-copy {
+  display: block;
   position: relative;
   z-index: 1;
   max-width: 680px;
 }
 
 .quiz-banner-eyebrow {
+  display: block;
   margin: 0 0 8px;
   font-family: var(--font-heading);
   font-weight: 700;
@@ -103,6 +133,7 @@ body[data-view="case-study"] .site-footer {
 }
 
 .quiz-banner-title {
+  display: block;
   margin: 0 0 10px;
   font-family: var(--font-display);
   font-weight: 400;
@@ -110,17 +141,21 @@ body[data-view="case-study"] .site-footer {
   line-height: 1.08;
   text-transform: uppercase;
   color: var(--ocb-accent-1);
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
 }
 
 .quiz-banner-subtitle {
+  display: block;
   margin: 0;
   font-family: var(--font-body);
   font-size: clamp(15px, 2vw, 17px);
   line-height: 1.5;
-  color: var(--ocb-secondary-3);
+  color: #FFF2E6;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.55);
 }
 
 .quiz-banner-actions {
+  display: block;
   position: relative;
   z-index: 1;
   width: 100%;
@@ -135,6 +170,10 @@ body[data-view="case-study"] .site-footer {
   color: var(--ocb-primary-1);
   white-space: normal;
   line-height: 1.25;
+}
+
+.quiz-banner:hover .quiz-banner-btn {
+  filter: brightness(1.06);
 }
 
 /* --------------------------------------------------------------------------
@@ -2032,10 +2071,6 @@ body[data-view="case-study"] .site-footer {
    6. TABLET BREAKPOINT (640px - 1023px)
    -------------------------------------------------------------------------- */
 @media (min-width: 640px) {
-  .quiz-banner-section {
-    padding: 52px 32px;
-  }
-
   .quiz-banner {
     flex-direction: row;
     align-items: center;
@@ -2158,10 +2193,6 @@ body[data-view="case-study"] .site-footer {
    7. DESKTOP BREAKPOINT (>= 1024px)
    -------------------------------------------------------------------------- */
 @media (min-width: 1024px) {
-  .quiz-banner-section {
-    padding: 64px clamp(40px, 6.9vw, 100px);
-  }
-
   .quiz-banner {
     padding: 38px 44px;
   }

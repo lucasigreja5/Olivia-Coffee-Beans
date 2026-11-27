@@ -31,7 +31,7 @@
         <a href="#home" class="nav-link is-active" data-nav="home" data-i18n="nav.home">HOME</a>
         <a href="#shop" class="nav-link" data-nav="shop" data-i18n="nav.shop">ROASTS</a>
         <a href="#features" class="nav-link" data-nav="features" data-i18n="nav.features">OUR STORY</a>
-        <a href="#case-study" class="nav-link" data-nav="case-study" data-i18n="nav.caseStudy">CASE STUDY</a>
+        <!-- TODO(v1.0): Decide whether to restore or permanently remove Case Study (<a href="#case-study" class="nav-link" data-nav="case-study" data-i18n="nav.caseStudy">CASE STUDY</a>) -->
         <button type="button" class="nav-link nav-cart-btn" id="header-cart-btn" data-action="open-cart-drawer" data-i18n-aria="nav.openCartAria" aria-label="Open shopping cart drawer">
           <span data-i18n="nav.cart">CART</span> <span class="nav-cart-count" id="nav-cart-count" hidden>(0)</span>
         </button>
@@ -61,7 +61,7 @@
         <a href="#home" class="drawer-link" data-nav="home" data-i18n="nav.home">HOME</a>
         <a href="#shop" class="drawer-link" data-nav="shop" data-i18n="nav.shop">ROASTS</a>
         <a href="#features" class="drawer-link" data-nav="features" data-i18n="nav.features">OUR STORY</a>
-        <a href="#case-study" class="drawer-link" data-nav="case-study" data-i18n="nav.caseStudy">CASE STUDY</a>
+        <!-- TODO(v1.0): Decide whether to restore or permanently remove Case Study (<a href="#case-study" class="drawer-link" data-nav="case-study" data-i18n="nav.caseStudy">CASE STUDY</a>) -->
         <button type="button" class="drawer-link drawer-cart-btn" id="drawer-cart-btn" data-action="open-cart-drawer" data-i18n-aria="nav.openCartAria" aria-label="Open shopping cart drawer">
           <span data-i18n="nav.cart">CART</span> <span class="drawer-cart-count" id="drawer-cart-count" hidden>(0)</span>
         </button>
@@ -70,7 +70,6 @@
         <button type="button" class="lang-btn is-active" data-lang="en" aria-pressed="true">EN</button>
         <button type="button" class="lang-btn" data-lang="pt-BR" aria-pressed="false">PT</button>
       </div>
-      <button type="button" class="drawer-newsletter-btn" data-action="open-newsletter" data-i18n="nav.newsletter">NEWSLETTER</button>
     </div>
   </aside>
 
@@ -101,10 +100,6 @@
               <button type="button" class="btn btn--accent btn--hero" data-action="buy-now" data-i18n="hero.buyNow">BUY NOW</button>
               <a href="#features" class="btn btn--outline-cream btn--outline-secondary btn--hero" data-nav="features" data-i18n="hero.learnMore">LEARN MORE</a>
             </div>
-
-            <button type="button" class="newsletter-trigger" data-action="open-newsletter" data-i18n="hero.newsletterTrigger">
-              Join our newsletter for roastery updates &amp; offers
-            </button>
           </div>
         </div>
       </div>
@@ -112,47 +107,42 @@
       <!-- Below the fold: Featured Roasts -->
       <section class="home-section featured-section" aria-labelledby="featured-heading">
         <div class="section-inner">
-          <header class="section-header">
-            <p class="section-eyebrow" data-i18n="featured.eyebrow">SMALL-BATCH BRAZILIAN SPECIALTY</p>
+          <header class="section-header section-header--featured">
             <h2 id="featured-heading" class="section-title" data-i18n="featured.title">FEATURED ROASTS</h2>
-            <p class="section-subtitle" data-i18n="featured.subtitle">
-              Solar-roasted to order from family farms in Minas Gerais and Bahia. Configure grind, bag size, or a 15% off subscription.
-            </p>
           </header>
+
+          <button type="button" class="quiz-banner quiz-banner--home" id="home-quiz-banner" data-action="open-quiz" data-i18n-aria="quiz.openAria" aria-label="Open 3-step coffee quiz">
+            <span class="quiz-banner-bg" aria-hidden="true">
+              <img class="quiz-banner-bg-img" src="assets/quiz-banner-coffee-warehouse.jpg" alt="" loading="lazy">
+              <span class="quiz-banner-scrim"></span>
+            </span>
+            <span class="quiz-banner-copy">
+              <span id="home-quiz-title" class="quiz-banner-title" data-i18n="quiz.title">FIND YOUR PERFECT ROAST</span>
+              <span class="quiz-banner-subtitle" data-i18n="quiz.subtitle">
+                Answer three quick questions and we will configure the ideal Brazilian coffee, grind, and delivery rhythm for you.
+              </span>
+            </span>
+            <span class="quiz-banner-actions">
+              <span class="btn btn--accent quiz-banner-btn" data-i18n="quiz.heroTriggerBtn">TAKE THE 30-SEC COFFEE QUIZ</span>
+            </span>
+          </button>
 
           <div class="products-grid products-grid--featured" id="featured-products-grid"></div>
 
           <div class="section-cta-wrap">
-            <a href="#shop" class="btn btn--primary btn--section-cta" data-nav="shop" data-i18n="featured.viewAllBtn">VIEW ALL 5 ROASTS</a>
-          </div>
-        </div>
-      </section>
-
-      <!-- Below the fold: Coffee Match Quiz CTA Banner -->
-      <section class="home-section quiz-banner-section" id="home-quiz-banner" aria-labelledby="home-quiz-title">
-        <div class="section-inner">
-          <div class="quiz-banner quiz-banner--home">
-            <div class="quiz-banner-copy">
-              <p class="quiz-banner-eyebrow" data-i18n="quiz.eyebrow">PERSONALIZED MATCH IN 30 SECONDS</p>
-              <h2 id="home-quiz-title" class="quiz-banner-title" data-i18n="quiz.title">FIND YOUR PERFECT ROAST</h2>
-              <p class="quiz-banner-subtitle" data-i18n="quiz.subtitle">
-                Answer three quick questions and we will configure the ideal Brazilian coffee, grind, and delivery rhythm for you.
-              </p>
-            </div>
-            <div class="quiz-banner-actions">
-              <button type="button" class="btn btn--accent quiz-banner-btn" data-action="open-quiz" data-i18n="quiz.heroTriggerBtn" data-i18n-aria="quiz.openAria">
-                TAKE THE 30-SEC COFFEE QUIZ
-              </button>
-            </div>
+            <a href="#shop" class="btn btn--primary btn--md btn--featured-cta" data-nav="shop" data-i18n="featured.viewAllBtn">LEARN MORE ABOUT OUR ROASTS</a>
           </div>
         </div>
       </section>
 
       <!-- Below the fold: Value Props / Benefits -->
       <section class="home-section benefits-section" aria-labelledby="benefits-heading">
-        <div class="section-inner">
+        <div class="benefits-bg" aria-hidden="true">
+          <img class="benefits-bg-img" src="assets/benefits-farm-aerial.jpg" alt="" loading="lazy">
+          <div class="benefits-scrim"></div>
+        </div>
+        <div class="section-inner benefits-inner">
           <header class="section-header section-header--light">
-            <p class="section-eyebrow" data-i18n="valueProps.eyebrow">WHY OLÍVIA</p>
             <h2 id="benefits-heading" class="section-title" data-i18n="valueProps.title">BREWING SOCIAL EQUITY</h2>
             <p class="section-subtitle" data-i18n="valueProps.subtitle">
               Every pouch connects transparent Brazilian terroir with measurable climate and community impact.
@@ -186,12 +176,12 @@
           </div>
 
           <div class="section-cta-wrap">
-            <a href="#features" class="btn btn--outline-cream btn--outline-secondary btn--section-cta" data-nav="features" data-i18n="valueProps.ctaStory">READ FULL IMPACT STORY</a>
+            <a href="#features" class="btn btn--accent btn--lg btn--featured-cta btn--benefits-cta" data-nav="features" data-i18n="valueProps.ctaStory">READ FULL IMPACT STORY</a>
           </div>
         </div>
       </section>
 
-      <!-- Below the fold: Brew Guide -->
+      <!-- TODO(v1.0): Decide whether to restore or permanently remove BEGINNER BREWING GUIDES
       <section class="home-section brew-guide-section" aria-labelledby="brew-heading">
         <div class="section-inner">
           <header class="section-header">
@@ -206,23 +196,20 @@
           <div class="brew-guide-panel" id="brew-guide-panel" role="tabpanel"></div>
         </div>
       </section>
+      -->
 
       <!-- Below the fold: Reviews -->
       <section class="home-section reviews-section" aria-labelledby="reviews-heading">
         <div class="section-inner">
-          <header class="section-header">
-            <p class="section-eyebrow" data-i18n="reviews.eyebrow">COMMUNITY VOICES</p>
+          <header class="section-header section-header--reviews">
             <h2 id="reviews-heading" class="section-title" data-i18n="reviews.title">LOVED BY HOME BARISTAS</h2>
-            <p class="section-subtitle" data-i18n="reviews.subtitle">
-              Real notes from subscribers brewing Olívia across Brazil and the US.
-            </p>
           </header>
 
           <div class="reviews-grid" id="reviews-grid"></div>
         </div>
       </section>
 
-      <!-- Below the fold: FAQ -->
+      <!-- TODO(v1.0): Decide whether to restore or permanently remove FREQUENTLY ASKED QUESTIONS
       <section class="home-section faq-section" aria-labelledby="faq-heading">
         <div class="section-inner">
           <header class="section-header">
@@ -236,6 +223,7 @@
           <div class="faq-list" id="faq-list"></div>
         </div>
       </section>
+      -->
     </section>
 
     <!-- VIEW 2: SHOP CATALOG -->
@@ -249,20 +237,21 @@
           </p>
         </header>
 
-        <div class="quiz-banner quiz-banner--shop" id="shop-quiz-banner" role="region" aria-labelledby="shop-quiz-title">
-          <div class="quiz-banner-copy">
-            <p class="quiz-banner-eyebrow" data-i18n="quiz.eyebrow">PERSONALIZED MATCH IN 30 SECONDS</p>
-            <h2 id="shop-quiz-title" class="quiz-banner-title" data-i18n="quiz.title">FIND YOUR PERFECT ROAST</h2>
-            <p class="quiz-banner-subtitle" data-i18n="quiz.subtitle">
+        <button type="button" class="quiz-banner quiz-banner--shop" id="shop-quiz-banner" data-action="open-quiz" data-i18n-aria="quiz.openAria" aria-label="Open 3-step coffee quiz">
+          <span class="quiz-banner-bg" aria-hidden="true">
+            <img class="quiz-banner-bg-img" src="assets/quiz-banner-coffee-warehouse.jpg" alt="" loading="lazy">
+            <span class="quiz-banner-scrim"></span>
+          </span>
+          <span class="quiz-banner-copy">
+            <span id="shop-quiz-title" class="quiz-banner-title" data-i18n="quiz.title">FIND YOUR PERFECT ROAST</span>
+            <span class="quiz-banner-subtitle" data-i18n="quiz.subtitle">
               Answer three quick questions and we will configure the ideal Brazilian coffee, grind, and delivery rhythm for you.
-            </p>
-          </div>
-          <div class="quiz-banner-actions">
-            <button type="button" class="btn btn--accent quiz-banner-btn" data-action="open-quiz" data-i18n="quiz.heroTriggerBtn" data-i18n-aria="quiz.openAria">
-              TAKE THE 30-SEC COFFEE QUIZ
-            </button>
-          </div>
-        </div>
+            </span>
+          </span>
+          <span class="quiz-banner-actions">
+            <span class="btn btn--accent quiz-banner-btn" data-i18n="quiz.heroTriggerBtn">TAKE THE 30-SEC COFFEE QUIZ</span>
+          </span>
+        </button>
 
         <div class="shop-toolbar">
           <div class="shop-filters" id="shop-filters" role="group" data-i18n-aria="shop.filterCategoryLabel" aria-label="Category">
@@ -274,7 +263,7 @@
           </div>
 
           <div class="shop-meta-controls">
-            <span class="shop-results-count" id="shop-results-count">5 roasts shown</span>
+            <span class="shop-results-count" id="shop-results-count">6 roasts shown</span>
             <label class="shop-sort-wrap" for="shop-sort">
               <span class="shop-sort-label" data-i18n="shop.sortLabel">Sort by</span>
               <select id="shop-sort" class="shop-sort-select">
@@ -541,7 +530,7 @@
       </div>
     </section>
 
-    <!-- VIEW 6: UX/UI CASE STUDY -->
+    <!-- TODO(v1.0): Decide whether to restore or permanently remove VIEW 6: UX/UI CASE STUDY
     <section id="view-case-study" class="view view--case-study" data-view="case-study" aria-labelledby="case-study-heading" hidden>
       <div class="case-study-shell">
         <header class="cs-hero">
@@ -558,6 +547,7 @@
         <div class="case-study-content" id="case-study-content"></div>
       </div>
     </section>
+    -->
 
     <!-- SHARED SITE FOOTER (Home, Shop & Case Study) -->
     <footer class="site-footer" id="site-footer">
@@ -592,7 +582,7 @@
             <li><a href="#home" data-nav="home" data-i18n="nav.home">HOME</a></li>
             <li><a href="#shop" data-nav="shop" data-i18n="nav.shop">ROASTS</a></li>
             <li><a href="#features" data-nav="features" data-i18n="nav.features">OUR STORY</a></li>
-            <li><a href="#case-study" data-nav="case-study" data-i18n="nav.caseStudy">CASE STUDY</a></li>
+            <!-- TODO(v1.0): Decide whether to restore or permanently remove Case Study (<li><a href="#case-study" data-nav="case-study" data-i18n="nav.caseStudy">CASE STUDY</a></li>) -->
             <li><a href="#cart" data-nav="cart" data-i18n="nav.cart">CART</a></li>
           </ul>
         </div>
@@ -606,19 +596,11 @@
           </ul>
           <p class="footer-promo-hint" data-i18n="footer.promoHint">Welcome codes: OLIVIA15 / BEMVINDO15 (15% off) or FREESHIP</p>
         </div>
-
-        <div class="footer-col footer-newsletter">
-          <h3 class="footer-heading" data-i18n="footer.newsletterHeading">Roastery Notes</h3>
-          <p class="footer-newsletter-desc" data-i18n="footer.newsletterDesc">
-            Get early access to micro-lots and 15% off your first bag with code OLIVIA15.
-          </p>
-          <button type="button" class="btn btn--accent btn--footer-newsletter" data-action="open-newsletter" data-i18n="footer.newsletterBtn">JOIN NEWSLETTER</button>
-        </div>
       </div>
 
       <div class="footer-bottom">
         <p class="footer-copy" data-i18n="footer.copyright">© 2026 Olívia Coffee Beans. All rights reserved.</p>
-        <p class="footer-attribution"><span data-i18n="footer.version">Olívia Coffee Beans v0.2</span> · <span data-i18n="footer.demoNote">Interactive storefront experience — no real charges are processed.</span></p>
+        <p class="footer-attribution"><span data-i18n="footer.version">Olívia Coffee Beans v0.3</span> · <span data-i18n="footer.demoNote">Interactive storefront experience — no real charges are processed.</span></p>
       </div>
     </footer>
   </main>
@@ -771,38 +753,6 @@
       <div class="pack-lid" id="pack-lid"></div>
       <img class="pack-cup" id="pack-cup" src="assets/checkout-cup.svg" width="68" height="75" alt="">
       <div class="pack-box" id="pack-box"></div>
-    </div>
-  </div>
-
-  <!-- NEWSLETTER POPUP MODAL -->
-  <div class="newsletter-modal" id="newsletter-modal" role="dialog" aria-modal="true" aria-labelledby="newsletter-title" aria-hidden="true" hidden>
-    <div class="newsletter-backdrop" data-action="close-newsletter"></div>
-    <div class="newsletter-shell">
-      <div class="newsletter-bg-wrap" aria-hidden="true">
-        <img class="newsletter-beans-bg" src="assets/newsletter-beans-bg.png" alt="">
-      </div>
-      <button type="button" class="newsletter-close-btn" id="newsletter-close-btn" data-action="close-newsletter" data-i18n-aria="newsletter.closeAria" aria-label="Close newsletter popup">
-        <img src="assets/icon-close-light.svg" width="31" height="32" alt="">
-      </button>
-      <div class="newsletter-card">
-        <div class="newsletter-glass-wrap" aria-hidden="true">
-          <img class="newsletter-glass" src="assets/newsletter-glass.png" alt="">
-        </div>
-        <h2 id="newsletter-title" class="newsletter-title" data-i18n="newsletter.title">JOIN OUR NEWSLETTER!</h2>
-        <p class="newsletter-subtitle" data-i18n="newsletter.subtitle">And don’t miss out on the latest news, promotions and deals on our products!</p>
-
-        <form id="newsletter-form" class="newsletter-form" novalidate>
-          <div class="form-field newsletter-field">
-            <label for="newsletter-email" class="field-label" data-i18n="newsletter.emailLabel">Email Address</label>
-            <input type="email" id="newsletter-email" class="field-input field-input--white" data-i18n-placeholder="newsletter.emailPlaceholder" placeholder="youremail@mail.com" required>
-            <span class="field-error" id="newsletter-error" aria-live="polite"></span>
-          </div>
-          <button type="submit" class="btn btn--primary btn--subscribe" data-i18n="newsletter.subscribeBtn">SUBSCRIBE</button>
-          <p class="newsletter-success" id="newsletter-success" data-i18n="newsletter.successMessage" aria-live="polite" hidden>
-            You’re subscribed! Watch your inbox for our next small-batch roast (and use OLIVIA15 for 15% off).
-          </p>
-        </form>
-      </div>
     </div>
   </div>
 

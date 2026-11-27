@@ -385,6 +385,30 @@
       schoolHoursPerBag: 2.2,
       extraFarmerUsdPerBag: 4.50,
       extraFarmerBrlPerBag: 22.30
+    },
+    'mantiqueira-bloom': {
+      productId: 'mantiqueira-bloom',
+      lotCode: 'LOT-MG-2609',
+      region: {
+        en: 'Serra da Mantiqueira, MG — Brazil',
+        'pt-BR': 'Serra da Mantiqueira, MG — Brasil'
+      },
+      farm: 'Fazenda Alto da Serra',
+      harvestDate: '2026-08',
+      roastDate: '2026-11-23',
+      farmerStory: {
+        en: 'Family-run high-altitude micro-lots at 1,450m in Carmo de Minas use shade-grown agroforestry and raised African drying beds, funding rural technical agronomy scholarships for local youth.',
+        'pt-BR': 'Microlotes familiares de altitude a 1.450m em Carmo de Minas cultivados sob agrofloresta e secos em terreiros suspensos, financiando bolsas técnicas de agronomia para jovens locais.'
+      },
+      priceBreakdown: {
+        farmerPct: 50,
+        roastingPackPct: 32,
+        communityFundPct: 18
+      },
+      cleanWaterLitersPerBag: 145,
+      schoolHoursPerBag: 1.8,
+      extraFarmerUsdPerBag: 3.90,
+      extraFarmerBrlPerBag: 19.40
     }
   };
 
@@ -395,8 +419,8 @@
         'pt-BR': 'Product Designer & Engenheiro Front-End'
       },
       timeline: {
-        en: '5 Iterative Releases (v0.1 -> v0.2)',
-        'pt-BR': '5 Entregas Iterativas (v0.1 -> v0.2)'
+        en: '9 Iterative Releases (v0.1 -> v0.3)',
+        'pt-BR': '9 Entregas Iterativas (v0.1 -> v0.3)'
       },
       deliverables: {
         en: [
@@ -421,7 +445,7 @@
         'Vanilla JS Globals',
         'localStorage State'
       ],
-      version: 'v0.2'
+      version: 'v0.3'
     },
     brief: {
       eyebrow: {
@@ -609,7 +633,7 @@
       },
       {
         id: 'v0.1.3',
-        version: 'v0.2',
+        version: 'v0.1.3',
         title: {
           en: 'Figma Component Library Alignment',
           'pt-BR': 'Alinhamento à Biblioteca de Componentes do Figma'
@@ -663,6 +687,122 @@
         ctaLabel: {
           en: 'View v0.2 Product Cards',
           'pt-BR': 'Ver Product Cards v0.2'
+        }
+      },
+      {
+        id: 'v0.2.1',
+        version: 'v0.2.1',
+        title: {
+          en: 'All-5 Featured Showcase & Roastery Quiz Hero',
+          'pt-BR': '5 Cafés em Destaque e Hero da Torrefação no Quiz'
+        },
+        summary: {
+          en: 'Streamlined Featured Roasts with ALT H0 Merriweather Bold (72pt) typography in Primary 1 (#216756), expanded desktop showcase to display all 5 roasts immediately with a Large CTA, and floated the Coffee Match Quiz over a full-bleed coffee warehouse hero banner.',
+          'pt-BR': 'Simplificou Torras em Destaque com tipografia ALT H0 Merriweather Bold (72pt) em Primário 1 (#216756), exibiu os 5 cafés no desktop com botão Large e aplicou o Quiz sobre um banner de armazém de café de largura total.'
+        },
+        highlights: {
+          en: [
+            'Featured Roasts ALT H0 (Merriweather 72pt in #216756) + 5-roast desktop layout',
+            'Large CTA updated to Learn More About Our Roasts',
+            'Full-bleed coffee warehouse table, cup & burlap bags Quiz hero banner'
+          ],
+          'pt-BR': [
+            'Torras em Destaque em ALT H0 (Merriweather 72pt #216756) com os 5 cafés no desktop',
+            'Botão Large atualizado para Saiba Mais Sobre Nossos Cafés',
+            'Quiz flutuando sobre banner editorial da mesa e sacos de café'
+          ]
+        },
+        jumpTarget: '#home',
+        ctaLabel: {
+          en: 'Preview v0.2.1 Home',
+          'pt-BR': 'Ver Início v0.2.1'
+        }
+      },
+      {
+        id: 'v0.2.2',
+        version: 'v0.2.2',
+        title: {
+          en: 'Solar Coffee Farm Aerial & Liquid-Glass Impact Pillars',
+          'pt-BR': 'Drone do Cafezal Solar e Pilares Liquid-Glass'
+        },
+        summary: {
+          en: 'Elevated Brewing Social Equity with an aerial solar coffee farm hero image, translucent frosted liquid-glass pillar cards, and a Large high-contrast filled CTA.',
+          'pt-BR': 'Elevou a seção Coando Equidade Social com foto aérea de cafezal e painéis solares, cards translúcidos em efeito liquid-glass e CTA Large sólido de alto contraste.'
+        },
+        highlights: {
+          en: [
+            'Full-bleed aerial drone solar coffee farm hero backdrop',
+            'Frosted liquid-glass cards for all 3 eco-impact pillars',
+            'Large solid Cerrado Gold Read Full Impact Story CTA'
+          ],
+          'pt-BR': [
+            'Foto aérea full-bleed da fazenda, armazém e painéis solares',
+            'Cards em liquid-glass translúcido para os 3 pilares eco',
+            'CTA Large sólido em Ouro do Cerrado para alto contraste'
+          ]
+        },
+        jumpTarget: '#home',
+        ctaLabel: {
+          en: 'See Brewing Social Equity',
+          'pt-BR': 'Ver Seção de Impacto'
+        }
+      },
+      {
+        id: 'v0.2.3',
+        version: 'v0.2.3',
+        title: {
+          en: '6-SKU All-Viewport Catalog, Quiz Card & De-Newsletter Polish',
+          'pt-BR': 'Catálogo de 6 Cafés em Todas as Telas, Quiz Card e Foco no Essencial'
+        },
+        summary: {
+          en: 'Introduced Mantiqueira Morning Bloom as a 6th micro-lot SKU (with Discovery Flight closing the 6-card showcase across desktop, tablet, and mobile), placed Find Your Perfect Roast inside Featured Roasts as an oversized coffee-warehouse button card, and removed all newsletter clutter.',
+          'pt-BR': 'Adicionou Florada da Mantiqueira como 6º microlote (com o Kit Degustação fechando a vitrine de 6 cards em desktop, tablet e mobile), trouxe Descubra Sua Torra Ideal para dentro de Torras em Destaque em formato card clicável e removeu toda a interface de newsletter.'
+        },
+        highlights: {
+          en: [
+            'All 6 roasts showcased across desktop, tablet & mobile',
+            'Oversized Coffee Quiz warehouse button card inside Featured Roasts',
+            'Removed newsletter popups, triggers & footer column'
+          ],
+          'pt-BR': [
+            'Todos os 6 cafés exibidos em desktop, tablet e mobile',
+            'Card clicável do Quiz com foto da torrefação em Torras em Destaque',
+            'Remoção completa de modais e gatilhos de newsletter'
+          ]
+        },
+        jumpTarget: '#shop',
+        ctaLabel: {
+          en: 'Browse All 6 Roasts',
+          'pt-BR': 'Explorar Todos os 6 Cafés'
+        }
+      },
+      {
+        id: 'v0.3',
+        version: 'v0.3',
+        title: {
+          en: 'Streamlined Storefront (Pre-v1.0 Cleanup)',
+          'pt-BR': 'Loja Enxuta (Ajustes Pré-v1.0)'
+        },
+        summary: {
+          en: 'Removed Beginner Brewing Guides, Frequently Asked Questions, and Case Study from the live website while keeping their markup, styles, data, and renderers preserved under TODO(v1.0) markers for final v1.0 evaluation.',
+          'pt-BR': 'Removeu os Guias de Preparo, Perguntas Frequentes e Estudo de Caso da loja ao vivo, preservando HTML, estilos, dados e renderizadores sob marcações TODO(v1.0) para decisão na v1.0.'
+        },
+        highlights: {
+          en: [
+            'Hidden Brew Guides, FAQ & Case Study from live site & nav',
+            'Kept all components & data intact for optional restoration',
+            'Logged v1.0 review checklist alongside qa-viewport.js'
+          ],
+          'pt-BR': [
+            'Guias de Preparo, FAQ e Estudo de Caso removidos do ar e menus',
+            'Código e dados preservados para reativação futura se desejado',
+            'Checklist de revisão registrado para o lançamento v1.0'
+          ]
+        },
+        jumpTarget: '#home',
+        ctaLabel: {
+          en: 'Explore Live Storefront',
+          'pt-BR': 'Explorar Loja Ao Vivo'
         }
       }
     ],

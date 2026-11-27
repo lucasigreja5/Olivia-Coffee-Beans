@@ -2,7 +2,8 @@
   'use strict';
 
   var STORAGE_KEY = 'ocb_state_v1';
-  var VALID_VIEWS = ['home', 'shop', 'features', 'case-study', 'cart', 'confirmation'];
+  // TODO(v1.0): Decide whether to restore or permanently remove Beginner Brewing Guides, FAQ, and Case Study (re-add 'case-study' here if restoring)
+  var VALID_VIEWS = ['home', 'shop', 'features', 'cart', 'confirmation'];
 
   var CATALOG = window.OCB_CATALOG || {};
   var I18N = window.OCB_I18N || {};
@@ -138,13 +139,6 @@
   var confirmImpactNote = document.getElementById('confirm-impact-note');
   var socialShareBtn = document.getElementById('social-share-btn');
   var shareFeedback = document.getElementById('share-feedback');
-
-  // Newsletter Modal DOM
-  var newsletterModal = document.getElementById('newsletter-modal');
-  var newsletterForm = document.getElementById('newsletter-form');
-  var newsletterEmail = document.getElementById('newsletter-email');
-  var newsletterError = document.getElementById('newsletter-error');
-  var newsletterSuccess = document.getElementById('newsletter-success');
 
   // --------------------------------------------------------------------------
   // Helpers & Catalog Lookups
@@ -620,19 +614,6 @@
     state.modal.productId = null;
   }
 
-  function openNewsletterModal() {
-    newsletterModal.hidden = false;
-    newsletterModal.setAttribute('aria-hidden', 'false');
-    newsletterError.textContent = '';
-    newsletterSuccess.hidden = true;
-    setTimeout(function () { newsletterEmail.focus(); }, 40);
-  }
-
-  function closeNewsletterModal() {
-    newsletterModal.hidden = true;
-    newsletterModal.setAttribute('aria-hidden', 'true');
-  }
-
   mobileMenuBtn.addEventListener('click', openMobileDrawer);
   drawerCloseBtn.addEventListener('click', closeMobileDrawer);
   drawerBackdrop.addEventListener('click', closeMobileDrawer);
@@ -643,10 +624,11 @@
   function buildProductCardHtml(p) {
     var name = pickLoc(p.name);
     var shortDesc = pickLoc(p.shortDescription);
+    var priceStr = formatPrice(p.priceUsd, p.priceBrl, state.lang);
     var btnLabel = t('shop.configureBtn', 'CONFIGURE BAG');
 
     return (
-      '<button type="button" class="product-card" data-product-id="' + escapeHtml(p.id) + '" data-open-product="' + escapeHtml(p.id) + '" aria-label="' + escapeHtml(name + ' — ' + btnLabel) + '">' +
+      '<article class="product-card" data-product-id="' + escapeHtml(p.id) + '" data-open-product="' + escapeHtml(p.id) + '">' +
         '<div class="product-card-media">' +
           '<img class="product-card-img" src="' + escapeHtml(p.image) + '" alt="' + escapeHtml(name) + '" loading="lazy">' +
         '</div>' +
@@ -654,14 +636,18 @@
           '<h3 class="product-card-title">' + escapeHtml(name) + '</h3>' +
           '<p class="product-card-desc">' + escapeHtml(shortDesc) + '</p>' +
         '</div>' +
-      '</button>'
+        '<div class="product-card-footer">' +
+          '<span class="product-card-price">' + escapeHtml(priceStr) + '</span>' +
+          '<button type="button" class="btn btn--primary btn--flat product-card-btn" data-open-product="' + escapeHtml(p.id) + '">' + escapeHtml(btnLabel) + '</button>' +
+        '</div>' +
+      '</article>'
     );
   }
 
   function renderFeaturedProducts() {
     if (!featuredGrid) return;
-    var featured = (CATALOG.products || []).filter(function (p) { return p.featured; });
-    featuredGrid.innerHTML = featured.map(buildProductCardHtml).join('');
+    var products = CATALOG.products || [];
+    featuredGrid.innerHTML = products.map(buildProductCardHtml).join('');
   }
 
   function renderBrewGuide() {
@@ -731,18 +717,20 @@
     if (!reviewsGrid) return;
     var reviews = CATALOG.reviews || [];
     var ratingAria = t('reviews.ratingAria', '5 out of 5 stars');
-    var verifiedBadge = t('reviews.verifiedBadge', 'Verified Buyer');
 
     reviewsGrid.innerHTML = reviews.map(function (r) {
       var ratingVal = Number(r.rating || 5);
       var initials = getAuthorInitials(r.author);
       var authorUpper = String(r.author || '').toUpperCase();
       var starsHtml = buildStarsHtml(ratingVal);
+      var avatarHtml = r.avatar
+        ? '<div class="review-avatar"><img class="review-avatar-img" src="' + escapeHtml(r.avatar) + '" alt="' + escapeHtml(r.author || '') + '" loading="lazy"></div>'
+        : '<div class="review-avatar" aria-hidden="true"><span>' + escapeHtml(initials) + '</span></div>';
 
       return (
         '<article class="review-card review-card--light">' +
           '<div class="review-card-header">' +
-            '<div class="review-avatar" aria-hidden="true"><span>' + escapeHtml(initials) + '</span></div>' +
+            avatarHtml +
             '<div class="review-header-info">' +
               '<h3 class="review-author-name">' + escapeHtml(authorUpper) + '</h3>' +
               '<div class="review-rating-row" aria-label="' + escapeHtml(ratingAria) + '">' +
@@ -754,7 +742,6 @@
           '<p class="review-quote">“' + escapeHtml(pickLoc(r.quote)) + '”</p>' +
           '<footer class="review-footer">' +
             '<span class="review-meta">' + escapeHtml(r.location) + ' · ' + escapeHtml(pickLoc(r.productName)) + '</span>' +
-            (r.verified ? '<span class="review-verified">' + escapeHtml(verifiedBadge) + '</span>' : '') +
           '</footer>' +
         '</article>'
       );
@@ -1345,11 +1332,6 @@
         setView('shop', true);
       } else if (action === 'return-home') {
         setView('home', true);
-      } else if (action === 'open-newsletter') {
-        closeMobileDrawer();
-        openNewsletterModal();
-      } else if (action === 'close-newsletter') {
-        closeNewsletterModal();
       } else if (action === 'open-cart-drawer') {
         openCartDrawer();
       } else if (action === 'close-cart-drawer') {
@@ -1787,26 +1769,12 @@
   });
 
   // --------------------------------------------------------------------------
-  // Newsletter Form & Global Escape Key
+  // Global Escape Key
   // --------------------------------------------------------------------------
-  newsletterForm.addEventListener('submit', function (event) {
-    event.preventDefault();
-    if (!validateEmail(newsletterEmail.value)) {
-      newsletterError.textContent = t('validation.newsletterEmail', 'Please enter a valid email address.');
-      newsletterSuccess.hidden = true;
-      newsletterEmail.focus();
-      return;
-    }
-    newsletterError.textContent = '';
-    newsletterSuccess.hidden = false;
-    newsletterForm.reset();
-  });
-
   document.addEventListener('keydown', function (event) {
     if (event.key === 'Escape') {
       if (!productModal.hidden) closeProductModal();
       if (!cartDrawer.hidden) closeCartDrawer();
-      if (!newsletterModal.hidden) closeNewsletterModal();
       if (mobileDrawer.classList.contains('is-open')) closeMobileDrawer();
       if (!cvcTooltip.hidden) {
         cvcPinned = false;
