@@ -169,76 +169,95 @@ body[data-view="cart"] .logo-img--green {
   white-space: nowrap;
 }
 
-/* Segmented Language Toggle */
+/* Figma LanguageToggle (485:1473) */
 .lang-toggle {
-  display: inline-flex;
-  align-items: center;
-  gap: 2px;
+  display: inline-grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: stretch;
+  gap: 3px;
   padding: 3px;
+  min-width: 92px;
+  height: 40px;
   border-radius: var(--ocb-radius-btn);
-  border: 1.5px solid rgba(231, 219, 207, 0.45);
-  background: rgba(30, 53, 38, 0.55);
+  border: 0;
+  background: var(--ocb-secondary-1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
   flex-shrink: 0;
 }
 
 .lang-btn {
   border: 0;
   background: transparent;
-  color: var(--ocb-secondary-1);
+  color: var(--ocb-primary-1);
   font-family: var(--font-heading);
   font-weight: 700;
-  font-size: 12px;
-  letter-spacing: 0.04em;
+  font-size: 14px;
+  letter-spacing: 0.02em;
   line-height: 1;
-  padding: 6px 10px;
-  border-radius: 7px;
+  text-transform: uppercase;
+  padding: 0 10px;
+  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
   transition: background-color 0.15s ease, color 0.15s ease;
 }
 
 .lang-btn:hover {
-  color: var(--ocb-accent-1);
+  color: var(--ocb-primary-2);
 }
 
 .lang-btn.is-active {
-  background: var(--ocb-accent-1);
-  color: var(--ocb-primary-2);
+  background: var(--ocb-primary-1);
+  color: var(--ocb-secondary-1);
 }
 
 body[data-view="cart"] .lang-toggle {
-  border-color: rgba(33, 103, 86, 0.4);
-  background: rgba(255, 242, 230, 0.85);
+  border: 1px solid rgba(33, 103, 86, 0.28);
+  background: var(--ocb-secondary-1);
 }
 
 body[data-view="cart"] .lang-btn {
-  color: var(--ocb-primary-2);
+  color: var(--ocb-primary-1);
 }
 
 body[data-view="cart"] .lang-btn:hover {
-  color: var(--ocb-primary-1);
+  color: var(--ocb-primary-2);
 }
 
 body[data-view="cart"] .lang-btn.is-active {
   background: var(--ocb-primary-1);
-  color: var(--ocb-secondary-3);
+  color: var(--ocb-secondary-1);
 }
 
 .lang-toggle--drawer {
-  border-color: rgba(30, 53, 38, 0.45);
-  background: rgba(30, 53, 38, 0.12);
+  min-width: 82px;
+  height: 36px;
 }
 
 .lang-toggle--drawer .lang-btn {
-  color: var(--ocb-primary-2);
-}
-
-.lang-toggle--drawer .lang-btn:hover {
+  font-size: 13px;
   color: var(--ocb-primary-1);
 }
 
+.lang-toggle--drawer .lang-btn:hover {
+  color: var(--ocb-primary-2);
+}
+
 .lang-toggle--drawer .lang-btn.is-active {
-  background: var(--ocb-primary-2);
-  color: var(--ocb-accent-1);
+  background: var(--ocb-primary-1);
+  color: var(--ocb-secondary-1);
+}
+
+.lang-toggle--figma {
+  width: 120px;
+  height: 52px;
+}
+
+.lang-toggle--figma .lang-btn {
+  font-size: 16px;
+  border-radius: 10px;
 }
 
 .mobile-menu-btn {

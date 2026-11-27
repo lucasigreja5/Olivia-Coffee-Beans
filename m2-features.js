@@ -892,7 +892,7 @@
             '</div>' +
           '</div>' +
           '<div class="cs-specimen-card">' +
-            '<span class="cs-specimen-title">' + escapeHtml(isPt ? 'Switch (116:64), Checkbox (117:514) & Star (117:260)' : 'Switch (116:64), Checkbox (117:514) & Star (117:260)') + '</span>' +
+            '<span class="cs-specimen-title">' + escapeHtml(isPt ? 'Switch (116:64), Checkbox (117:514), Star (117:260) & LanguageToggle (485:1473)' : 'Switch (116:64), Checkbox (117:514), Star (117:260) & LanguageToggle (485:1473)') + '</span>' +
             '<div class="cs-specimen-row">' +
               '<button type="button" class="ocb-switch' + (switchOn ? ' is-on' : '') + '" data-cs-switch role="switch" aria-checked="' + String(switchOn) + '" aria-label="' + escapeHtml(isPt ? 'Alternar assinatura' : 'Toggle subscription') + '">' +
                 '<img class="ocb-switch-img" src="assets/switch-' + (switchOn ? 'on' : 'off') + '.svg" width="36" height="17" alt="">' +
@@ -901,10 +901,16 @@
               buildSpecimenCheckboxHtml('secondary', isPt ? 'Checkbox Secundário' : 'Secondary Checkbox') +
               buildSpecimenCheckboxHtml('accent', isPt ? 'Checkbox Destaque' : 'Accent Checkbox') +
             '</div>' +
-            '<div class="cs-specimen-row" style="margin-top:14px">' +
-              '<img class="ocb-star" src="assets/star-full.svg" width="26" height="23" alt="' + escapeHtml(isPt ? 'Estrela cheia' : 'Full star') + '">' +
-              '<img class="ocb-star" src="assets/star-half.svg" width="26" height="23" alt="' + escapeHtml(isPt ? 'Meia estrela' : 'Half star') + '">' +
-              '<img class="ocb-star" src="assets/star-empty.svg" width="26" height="23" alt="' + escapeHtml(isPt ? 'Estrela vazia' : 'Empty star') + '">' +
+            '<div class="cs-specimen-row" style="margin-top:14px; justify-content:space-between; flex-wrap:wrap; gap:14px">' +
+              '<div class="cs-specimen-row">' +
+                '<img class="ocb-star" src="assets/star-full.svg" width="26" height="23" alt="' + escapeHtml(isPt ? 'Estrela cheia' : 'Full star') + '">' +
+                '<img class="ocb-star" src="assets/star-half.svg" width="26" height="23" alt="' + escapeHtml(isPt ? 'Meia estrela' : 'Half star') + '">' +
+                '<img class="ocb-star" src="assets/star-empty.svg" width="26" height="23" alt="' + escapeHtml(isPt ? 'Estrela vazia' : 'Empty star') + '">' +
+              '</div>' +
+              '<div class="lang-toggle lang-toggle--figma" role="group" aria-label="' + escapeHtml(t('common.languageToggleAria', 'Switch language between English and Brazilian Portuguese')) + '">' +
+                '<button type="button" class="lang-btn' + (!isPt ? ' is-active' : '') + '" data-cs-lang="en" aria-pressed="' + String(!isPt) + '">EN</button>' +
+                '<button type="button" class="lang-btn' + (isPt ? ' is-active' : '') + '" data-cs-lang="pt-BR" aria-pressed="' + String(isPt) + '">PT</button>' +
+              '</div>' +
             '</div>' +
           '</div>' +
           '<div class="cs-specimen-card cs-specimen-card--full">' +
@@ -1006,6 +1012,14 @@
             ? '<img src="assets/checkbox-' + variant + '-on.svg" width="30" height="30" alt="">'
             : '';
         }
+        return;
+      }
+
+      var csLangBtn = e.target.closest('[data-cs-lang]');
+      if (csLangBtn) {
+        var nextLang = csLangBtn.dataset.csLang;
+        var headerLangBtn = nextLang ? document.querySelector('.lang-btn[data-lang="' + nextLang + '"]') : null;
+        if (headerLangBtn) headerLangBtn.click();
         return;
       }
 
