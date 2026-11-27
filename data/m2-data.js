@@ -395,8 +395,8 @@
         'pt-BR': 'Product Designer & Engenheiro Front-End'
       },
       timeline: {
-        en: '4 Iterative Releases (v0.1 -> v0.1.3)',
-        'pt-BR': '4 Entregas Iterativas (v0.1 -> v0.1.3)'
+        en: '5 Iterative Releases (v0.1 -> v0.2)',
+        'pt-BR': '5 Entregas Iterativas (v0.1 -> v0.2)'
       },
       deliverables: {
         en: [
@@ -421,7 +421,7 @@
         'Vanilla JS Globals',
         'localStorage State'
       ],
-      version: 'v0.1.3'
+      version: 'v0.2'
     },
     brief: {
       eyebrow: {
@@ -609,7 +609,7 @@
       },
       {
         id: 'v0.1.3',
-        version: 'v0.1.3',
+        version: 'v0.2',
         title: {
           en: 'Figma Component Library Alignment',
           'pt-BR': 'Alinhamento à Biblioteca de Componentes do Figma'
@@ -634,6 +634,35 @@
         ctaLabel: {
           en: 'Inspect Aligned Catalog',
           'pt-BR': 'Ver Catálogo Alinhado'
+        }
+      },
+      {
+        id: 'v0.2',
+        version: 'v0.2',
+        title: {
+          en: '1:1 Figma Product Card & Drawer Polish',
+          'pt-BR': 'Paridade 1:1 de Product Card e Menu Mobile'
+        },
+        summary: {
+          en: 'Stripped product cards down to the pure Figma component (image, uppercase title, and description), aligned mobile drawer icons/links to Primary 1 (#216756), and updated LanguageToggle to Figma colors.',
+          'pt-BR': 'Simplificou os cards de produto ao componente puro do Figma (imagem, título e descrição), alinhou ícones e links do menu mobile em Primário 1 (#216756) e atualizou o LanguageToggle.'
+        },
+        highlights: {
+          en: [
+            'Pure Figma Product Card layout (zero extra clutter)',
+            'Unified Olívia logo ziplock pouch photography',
+            'Primary 1 drawer icons + #216756/#1E3526 LanguageToggle'
+          ],
+          'pt-BR': [
+            'Layout puro do Product Card do Figma sem ruído extra',
+            'Fotos unificadas com logo oficial e fecho ziplock',
+            'Menu mobile em #216756 e LanguageToggle atualizado'
+          ]
+        },
+        jumpTarget: '#shop',
+        ctaLabel: {
+          en: 'View v0.2 Product Cards',
+          'pt-BR': 'Ver Product Cards v0.2'
         }
       }
     ],

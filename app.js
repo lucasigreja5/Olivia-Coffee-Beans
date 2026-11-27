@@ -642,59 +642,19 @@
   // --------------------------------------------------------------------------
   function buildProductCardHtml(p) {
     var name = pickLoc(p.name);
-    var origin = pickLoc(p.origin);
-    var roastLabel = pickLoc(p.roastLabel);
-    var badge = pickLoc(p.badge);
     var shortDesc = pickLoc(p.shortDescription);
-    var notes = (p.tastingNotes && (p.tastingNotes[state.lang] || p.tastingNotes.en)) || [];
-    var priceStr = formatPrice(p.priceUsd, p.priceBrl, state.lang);
-    var fromLabel = p.fixedSize ? '' : t('common.fromPrice', 'From');
     var btnLabel = t('shop.configureBtn', 'CONFIGURE BAG');
 
-    var dotsHtml = '';
-    for (var d = 1; d <= 5; d += 1) {
-      dotsHtml += '<span class="roast-dot' + (d <= (p.roastLevel || 3) ? ' is-filled' : '') + '"></span>';
-    }
-
-    var tagsHtml = notes.map(function (note) {
-      return '<span class="tasting-tag">' + escapeHtml(note) + '</span>';
-    }).join('');
-
-    var kraftHtml = p.isKraftOverlay
-      ? '<img class="product-card-kraft-logo" src="assets/logo-green.svg" width="96" height="32" alt="">'
-      : '';
-
     return (
-      '<article class="product-card" data-product-id="' + escapeHtml(p.id) + '">' +
-        '<div class="product-card-media' + (p.isKraftOverlay ? ' is-kraft' : '') + '">' +
+      '<button type="button" class="product-card" data-product-id="' + escapeHtml(p.id) + '" data-open-product="' + escapeHtml(p.id) + '" aria-label="' + escapeHtml(name + ' — ' + btnLabel) + '">' +
+        '<div class="product-card-media">' +
           '<img class="product-card-img" src="' + escapeHtml(p.image) + '" alt="' + escapeHtml(name) + '" loading="lazy">' +
-          kraftHtml +
-          (badge ? '<span class="product-card-badge">' + escapeHtml(badge) + '</span>' : '') +
         '</div>' +
         '<div class="product-card-body">' +
           '<h3 class="product-card-title">' + escapeHtml(name) + '</h3>' +
           '<p class="product-card-desc">' + escapeHtml(shortDesc) + '</p>' +
-          '<div class="product-card-meta">' +
-            '<span class="product-card-origin">' + escapeHtml(origin) + '</span>' +
-            '<span class="product-card-roast" title="' + escapeHtml(roastLabel) + '">' +
-              '<span class="roast-dots" aria-hidden="true">' + dotsHtml + '</span>' +
-              '<span class="roast-text">' + escapeHtml(roastLabel) + '</span>' +
-            '</span>' +
-          '</div>' +
-          '<div class="product-card-tags">' + tagsHtml + '</div>' +
-          '<div class="product-card-footer">' +
-            '<div class="product-card-price-block">' +
-              (fromLabel ? '<span class="product-card-from">' + escapeHtml(fromLabel) + '</span>' : '') +
-              '<strong class="product-card-price">' + escapeHtml(priceStr) + '</strong>' +
-            '</div>' +
-            '<div class="product-card-actions">' +
-              '<button type="button" class="btn btn--primary btn--xs product-card-btn" data-open-product="' + escapeHtml(p.id) + '">' +
-                escapeHtml(btnLabel) +
-              '</button>' +
-            '</div>' +
-          '</div>' +
         '</div>' +
-      '</article>'
+      '</button>'
     );
   }
 

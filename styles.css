@@ -179,8 +179,8 @@ body[data-view="cart"] .logo-img--green {
   min-width: 92px;
   height: 40px;
   border-radius: var(--ocb-radius-btn);
-  border: 0;
-  background: var(--ocb-secondary-1);
+  border: 1px solid rgba(231, 219, 207, 0.22);
+  background: var(--ocb-primary-1);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
   flex-shrink: 0;
 }
@@ -188,7 +188,7 @@ body[data-view="cart"] .logo-img--green {
 .lang-btn {
   border: 0;
   background: transparent;
-  color: var(--ocb-primary-1);
+  color: var(--ocb-secondary-1);
   font-family: var(--font-heading);
   font-weight: 700;
   font-size: 14px;
@@ -205,54 +205,28 @@ body[data-view="cart"] .logo-img--green {
 }
 
 .lang-btn:hover {
-  color: var(--ocb-primary-2);
+  color: var(--ocb-secondary-3);
 }
 
 .lang-btn.is-active {
-  background: var(--ocb-primary-1);
-  color: var(--ocb-secondary-1);
-}
-
-body[data-view="cart"] .lang-toggle {
-  border: 1px solid rgba(33, 103, 86, 0.28);
-  background: var(--ocb-secondary-1);
-}
-
-body[data-view="cart"] .lang-btn {
-  color: var(--ocb-primary-1);
-}
-
-body[data-view="cart"] .lang-btn:hover {
-  color: var(--ocb-primary-2);
-}
-
-body[data-view="cart"] .lang-btn.is-active {
-  background: var(--ocb-primary-1);
+  background: var(--ocb-primary-2);
   color: var(--ocb-secondary-1);
 }
 
 .lang-toggle--drawer {
   min-width: 82px;
   height: 36px;
+  border: 0;
 }
 
 .lang-toggle--drawer .lang-btn {
   font-size: 13px;
-  color: var(--ocb-primary-1);
-}
-
-.lang-toggle--drawer .lang-btn:hover {
-  color: var(--ocb-primary-2);
-}
-
-.lang-toggle--drawer .lang-btn.is-active {
-  background: var(--ocb-primary-1);
-  color: var(--ocb-secondary-1);
 }
 
 .lang-toggle--figma {
   width: 120px;
   height: 52px;
+  border: 0;
 }
 
 .lang-toggle--figma .lang-btn {
@@ -367,7 +341,7 @@ body[data-view="cart"] .menu-icon--green {
   font-size: 18px;
   line-height: 1.2;
   text-transform: uppercase;
-  color: var(--ocb-primary-2);
+  color: var(--ocb-primary-1);
   text-align: right;
 }
 
@@ -389,10 +363,10 @@ body[data-view="cart"] .menu-icon--green {
 
 .drawer-newsletter-btn {
   margin-top: auto;
-  border: 3px solid var(--ocb-primary-2);
+  border: 3px solid var(--ocb-primary-1);
   border-radius: var(--ocb-radius-btn);
   background: transparent;
-  color: var(--ocb-primary-2);
+  color: var(--ocb-primary-1);
   font-family: var(--font-heading);
   font-weight: 700;
   font-size: 13px;
@@ -1335,6 +1309,11 @@ button.ocb-checkbox {
 }
 
 .product-card {
+  width: 100%;
+  border: 0;
+  text-align: inherit;
+  font: inherit;
+  cursor: pointer;
   background: var(--ocb-secondary-1);
   border-radius: var(--ocb-radius-card);
   overflow: hidden;

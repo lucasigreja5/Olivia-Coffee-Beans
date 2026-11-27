@@ -723,7 +723,7 @@
         '<div class="cs-meta-grid">' +
           '<div class="cs-meta-item"><span class="cs-meta-label">' + escapeHtml(t('caseStudy.roleLabel', 'Role')) + '</span><strong class="cs-meta-val">' + escapeHtml(pickLoc(meta.role)) + '</strong></div>' +
           '<div class="cs-meta-item"><span class="cs-meta-label">' + escapeHtml(t('caseStudy.timelineLabel', 'Timeline')) + '</span><strong class="cs-meta-val">' + escapeHtml(pickLoc(meta.timeline)) + '</strong></div>' +
-          '<div class="cs-meta-item"><span class="cs-meta-label">' + escapeHtml(t('caseStudy.versionLabel', 'Current Build')) + '</span><strong class="cs-meta-val cs-version-pill">' + escapeHtml(meta.version || 'v0.1.3') + '</strong></div>' +
+          '<div class="cs-meta-item"><span class="cs-meta-label">' + escapeHtml(t('caseStudy.versionLabel', 'Current Build')) + '</span><strong class="cs-meta-val cs-version-pill">' + escapeHtml(meta.version || 'v0.2') + '</strong></div>' +
         '</div>' +
         '<div class="cs-meta-tags-row">' +
           '<div class="cs-meta-tag-group"><span class="cs-meta-label">' + escapeHtml(t('caseStudy.deliverablesLabel', 'Deliverables')) + ':</span><div class="cs-chip-list">' +
@@ -804,7 +804,7 @@
       '<section class="cs-section cs-evolution-section">' +
         '<div class="cs-section-head">' +
           '<p class="cs-section-eyebrow">' + escapeHtml(t('caseStudy.evolutionEyebrow', 'ITERATIVE SHIP LOG')) + '</p>' +
-          '<h2 class="cs-section-title">' + escapeHtml(t('caseStudy.evolutionHeading', 'Product Evolution (v0.1 -> v0.1.3)')) + '</h2>' +
+          '<h2 class="cs-section-title">' + escapeHtml(t('caseStudy.evolutionHeading', 'Product Evolution (v0.1 -> v0.2)')) + '</h2>' +
         '</div>' +
         '<div class="cs-evolution-grid">' +
           evolution.map(function (evo) {
